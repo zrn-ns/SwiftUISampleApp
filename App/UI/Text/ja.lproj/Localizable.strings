@@ -7,6 +7,7 @@
 */
 
 "github id" = "Github ID";
+"loading" = "読込中";
 "reload" = "再読み込み";
 "reset" = "リセット";
 "settings" = "設定";

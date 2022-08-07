@@ -10,18 +10,23 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var settings: UserSettings
-    @State var errorMessage: String?
+    @State var loadState: LoadState = .normal
 
     var body: some View {
         NavigationView {
             VStack {
-                if let errorMessage {
-                    ReloadableErrorView(errorMessage: errorMessage) {
-                        reloadData()
-                    }
-                } else {
+                switch loadState {
+                case .normal:
                     #warning("書き換え予定")
                     Button("Send Request") {
+                        reloadData()
+                    }
+                case .loading:
+                    ProgressView(Localizable.loading())
+
+                case .error(let apiError):
+                    #warning("表示用のメッセージを出すように修正")
+                    ReloadableErrorView(errorMessage: apiError.localizedDescription) {
                         reloadData()
                     }
                 }
@@ -36,15 +41,23 @@ struct ContentView: View {
 
     private func reloadData() {
         Task {
+            changeLoadStateSafety(loadState: .loading)
+
             let result = await APIClient.send(GetRepositoryListRequest(userId: settings.userId))
             switch result {
             case .success(let success):
-                #warning("リストに反映")
+                changeLoadStateSafety(loadState: .normal)
                 print(success)
             case .failure(let failure):
-                errorMessage = failure.localizedDescription
+                changeLoadStateSafety(loadState: .error(failure))
             }
         }
+    }
+
+    private func changeLoadStateSafety(loadState: LoadState) {
+        guard self.loadState != loadState else { return }
+
+        self.loadState = loadState
     }
 }
 
