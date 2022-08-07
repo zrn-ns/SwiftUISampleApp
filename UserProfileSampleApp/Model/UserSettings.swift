@@ -12,7 +12,7 @@ final class UserSettings: ObservableObject {
 
     @Published var userId: String {
         didSet {
-            UserDefaults.standard.setValue(userId, forKey: "userId")
+            userDefaults.setValue(userId, forKey: "userId")
         }
     }
 
@@ -24,8 +24,8 @@ final class UserSettings: ObservableObject {
 
     fileprivate init(suiteName: String? = nil) {
         self.suiteName = suiteName ?? Bundle.main.bundleIdentifier!
-        self.userId = UserDefaults.standard.value(forKey: "userId") as? String ?? ""
         userDefaults = .init(suiteName: suiteName)!
+        self.userId = userDefaults.value(forKey: "userId") as? String ?? ""
     }
 
     private var userDefaults: UserDefaults
