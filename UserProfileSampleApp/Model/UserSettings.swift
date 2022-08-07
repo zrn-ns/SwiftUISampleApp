@@ -10,7 +10,7 @@ import Foundation
 final class UserSettings: ObservableObject {
     static let shared: UserSettings = .init()
 
-    var userId: String {
+    @Published var userId: String {
         didSet {
             UserDefaults.standard.setValue(userId, forKey: "userId")
         }
