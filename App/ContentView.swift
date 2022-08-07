@@ -41,23 +41,25 @@ struct ContentView: View {
 
     private func reloadData() {
         Task {
-            changeLoadStateSafety(loadState: .loading)
+            changeLoadStateSafetyAnimated(loadState: .loading)
 
             let result = await APIClient.send(GetRepositoryListRequest(userId: settings.userId))
             switch result {
             case .success(let success):
-                changeLoadStateSafety(loadState: .normal)
+                changeLoadStateSafetyAnimated(loadState: .normal)
                 print(success)
             case .failure(let failure):
-                changeLoadStateSafety(loadState: .error(failure))
+                changeLoadStateSafetyAnimated(loadState: .error(failure))
             }
         }
     }
 
-    private func changeLoadStateSafety(loadState: LoadState) {
+    private func changeLoadStateSafetyAnimated(loadState: LoadState) {
         guard self.loadState != loadState else { return }
 
-        self.loadState = loadState
+        withAnimation {
+            self.loadState = loadState
+        }
     }
 }
 
