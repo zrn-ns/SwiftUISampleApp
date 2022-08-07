@@ -12,6 +12,7 @@
 		746508E828951783009B554D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 746508E728951783009B554D /* Assets.xcassets */; };
 		746508EB28951783009B554D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 746508EA28951783009B554D /* Preview Assets.xcassets */; };
 		746508F7289535B9009B554D /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746508F6289535B9009B554D /* ColorPalette.swift */; };
+		746508FA28961986009B554D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746508F928961986009B554D /* SettingsView.swift */; };
 		74FC4EA928962B8F005B8B83 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FC4EA828962B8F005B8B83 /* UserSettings.swift */; };
 /* End PBXBuildFile section */
 
@@ -22,6 +23,7 @@
 		746508E728951783009B554D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		746508EA28951783009B554D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		746508F6289535B9009B554D /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
+		746508F928961986009B554D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		74FC4EA828962B8F005B8B83 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,8 +79,17 @@
 			isa = PBXGroup;
 			children = (
 				746508F428953597009B554D /* Color */,
+				746508F32895358F009B554D /* View */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		746508F32895358F009B554D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				746508F82896196A009B554D /* Settings */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		746508F428953597009B554D /* Color */ = {
@@ -87,6 +98,14 @@
 				746508F6289535B9009B554D /* ColorPalette.swift */,
 			);
 			path = Color;
+			sourceTree = "<group>";
+		};
+		746508F82896196A009B554D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				746508F928961986009B554D /* SettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		74FC4EA728962B72005B8B83 /* Model */ = {
@@ -169,6 +188,7 @@
 			files = (
 				74FC4EA928962B8F005B8B83 /* UserSettings.swift in Sources */,
 				746508E628951782009B554D /* ContentView.swift in Sources */,
+				746508FA28961986009B554D /* SettingsView.swift in Sources */,
 				746508E428951782009B554D /* UserProfileSampleAppApp.swift in Sources */,
 				746508F7289535B9009B554D /* ColorPalette.swift in Sources */,
 			);

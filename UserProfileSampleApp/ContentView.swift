@@ -8,18 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var settings: UserSettings
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            VStack {
+                Image(systemName: "globe")
+                    .imageScale(.large)
+                    .foregroundColor(.contentColor(.base))
+                Text("Hello, world!")
+            }.toolbar {
+                NavigationLink(destination: SettingsView(settings: settings), label: {
+                    Image(systemName: "gearshape")
+                })
+            }
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(settings: UserSettings.sharedForPreview)
     }
 }
