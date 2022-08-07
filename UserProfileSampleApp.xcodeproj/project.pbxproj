@@ -11,7 +11,6 @@
 		746508E628951782009B554D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746508E528951782009B554D /* ContentView.swift */; };
 		746508E828951783009B554D /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 746508E728951783009B554D /* Icons.xcassets */; };
 		746508EB28951783009B554D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 746508EA28951783009B554D /* Preview Assets.xcassets */; };
-		746508F7289535B9009B554D /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746508F6289535B9009B554D /* ColorPalette.swift */; };
 		746508FA28961986009B554D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746508F928961986009B554D /* SettingsView.swift */; };
 		74A51034289F5C8B0094E1C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 74A51036289F5C8B0094E1C8 /* Localizable.strings */; };
 		74A5103D289F6E7D0094E1C8 /* Rswift in Frameworks */ = {isa = PBXBuildFile; productRef = 74A5103C289F6E7D0094E1C8 /* Rswift */; };
@@ -28,7 +27,6 @@
 		746508E528951782009B554D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		746508E728951783009B554D /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		746508EA28951783009B554D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		746508F6289535B9009B554D /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		746508F928961986009B554D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		74A51035289F5C8B0094E1C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		74A51037289F5CA30094E1C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 			isa = PBXGroup;
 			children = (
 				74A5104A289F977D0094E1C8 /* Colors.xcassets */,
-				746508F6289535B9009B554D /* ColorPalette.swift */,
 				74A51048289F967A0094E1C8 /* Rswift+Extensions.swift */,
 			);
 			path = Color;
@@ -259,7 +256,6 @@
 				746508FA28961986009B554D /* SettingsView.swift in Sources */,
 				74A51049289F967A0094E1C8 /* Rswift+Extensions.swift in Sources */,
 				746508E428951782009B554D /* UserProfileSampleAppApp.swift in Sources */,
-				746508F7289535B9009B554D /* ColorPalette.swift in Sources */,
 				74A5103F289F701B0094E1C8 /* R.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
