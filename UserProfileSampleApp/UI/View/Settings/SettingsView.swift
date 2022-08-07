@@ -21,6 +21,10 @@ struct SettingsView: View {
                     .multilineTextAlignment(.trailing)
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled(true)
+            }.toolbar {
+                Button("Reset") {
+                    settings.reset()
+                }
             }
         }.navigationTitle("Settings")
     }
