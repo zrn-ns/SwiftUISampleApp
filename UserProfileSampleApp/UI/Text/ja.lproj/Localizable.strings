@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  UserProfileSampleApp
+
+  Created by zrn_ns on 2022/08/07.
+  
+*/
+
+"GITHUB_ID" = "Github ID";
+"RESET" = "リセット";
+"SETTINGS" = "設定";
