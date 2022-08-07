@@ -8,7 +8,7 @@
 import Alamofire
 import Foundation
 
-public enum APIError: Error {
+public enum APIError: Error, Equatable {
     /// サーバ不達
     case connectionFailure
     /// クライアント側のロジックエラー

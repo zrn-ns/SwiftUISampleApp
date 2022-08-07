@@ -30,6 +30,7 @@
 		74A51081289FBE980094E1C8 /* MinimalRepositoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A51080289FBE980094E1C8 /* MinimalRepositoryResponse.swift */; };
 		74A51083289FECCD0094E1C8 /* APIMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A51082289FECCD0094E1C8 /* APIMethod.swift */; };
 		74A5108A289FF0FB0094E1C8 /* ReloadableErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A51089289FF0FB0094E1C8 /* ReloadableErrorView.swift */; };
+		74A5108C28A081580094E1C8 /* LoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5108B28A081580094E1C8 /* LoadState.swift */; };
 		74FC4EA928962B8F005B8B83 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FC4EA828962B8F005B8B83 /* UserSettings.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		74A51080289FBE980094E1C8 /* MinimalRepositoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalRepositoryResponse.swift; sourceTree = "<group>"; };
 		74A51082289FECCD0094E1C8 /* APIMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMethod.swift; sourceTree = "<group>"; };
 		74A51089289FF0FB0094E1C8 /* ReloadableErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadableErrorView.swift; sourceTree = "<group>"; };
+		74A5108B28A081580094E1C8 /* LoadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadState.swift; sourceTree = "<group>"; };
 		74FC4EA828962B8F005B8B83 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -239,6 +241,7 @@
 		74FC4EA728962B72005B8B83 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				74A5108B28A081580094E1C8 /* LoadState.swift */,
 				74FC4EA828962B8F005B8B83 /* UserSettings.swift */,
 			);
 			path = Model;
@@ -400,6 +403,7 @@
 				746508E628951782009B554D /* ContentView.swift in Sources */,
 				746508FA28961986009B554D /* SettingsView.swift in Sources */,
 				74A51049289F967A0094E1C8 /* Rswift+Extensions.swift in Sources */,
+				74A5108C28A081580094E1C8 /* LoadState.swift in Sources */,
 				746508E428951782009B554D /* UserProfileSampleAppApp.swift in Sources */,
 				74A5103F289F701B0094E1C8 /* R.generated.swift in Sources */,
 			);
