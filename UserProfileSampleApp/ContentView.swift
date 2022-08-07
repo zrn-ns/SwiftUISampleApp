@@ -15,7 +15,7 @@ struct ContentView: View {
             VStack {
                 Image(systemName: "globe")
                     .imageScale(.large)
-                    .foregroundColor(.contentColor(.base))
+                    .foregroundColor(R.color.contentBase.color)
                 Text("Hello, world!")
             }.toolbar {
                 NavigationLink(destination: SettingsView(settings: settings), label: {
