@@ -17,7 +17,7 @@ final class UserSettings: ObservableObject {
     }
 
     func reset() {
-        UserDefaults.standard.removePersistentDomain(forName: suiteName)
+        self.userId = ""
     }
 
     // MARK: - private
