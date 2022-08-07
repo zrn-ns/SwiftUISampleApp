@@ -23,7 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		746508E028951782009B554D /* UserProfileSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserProfileSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		746508E028951782009B554D /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		746508E328951782009B554D /* UserProfileSampleAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileSampleAppApp.swift; sourceTree = "<group>"; };
 		746508E528951782009B554D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		746508E728951783009B554D /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
@@ -54,7 +54,7 @@
 		746508D728951782009B554D = {
 			isa = PBXGroup;
 			children = (
-				746508E228951782009B554D /* UserProfileSampleApp */,
+				746508E228951782009B554D /* App */,
 				746508E128951782009B554D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,12 +62,12 @@
 		746508E128951782009B554D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				746508E028951782009B554D /* UserProfileSampleApp.app */,
+				746508E028951782009B554D /* App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		746508E228951782009B554D /* UserProfileSampleApp */ = {
+		746508E228951782009B554D /* App */ = {
 			isa = PBXGroup;
 			children = (
 				74FC4EA728962B72005B8B83 /* Model */,
@@ -77,7 +77,7 @@
 				746508E728951783009B554D /* Icons.xcassets */,
 				746508E928951783009B554D /* Preview Content */,
 			);
-			path = UserProfileSampleApp;
+			path = App;
 			sourceTree = "<group>";
 		};
 		746508E928951783009B554D /* Preview Content */ = {
@@ -152,9 +152,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		746508DF28951782009B554D /* UserProfileSampleApp */ = {
+		746508DF28951782009B554D /* App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 746508EE28951783009B554D /* Build configuration list for PBXNativeTarget "UserProfileSampleApp" */;
+			buildConfigurationList = 746508EE28951783009B554D /* Build configuration list for PBXNativeTarget "App" */;
 			buildPhases = (
 				74A51038289F6B370094E1C8 /* R.swift */,
 				746508DC28951782009B554D /* Sources */,
@@ -165,13 +165,13 @@
 			);
 			dependencies = (
 			);
-			name = UserProfileSampleApp;
+			name = App;
 			packageProductDependencies = (
 				74A5103C289F6E7D0094E1C8 /* Rswift */,
 				74A5104D289F9E770094E1C8 /* Alamofire */,
 			);
 			productName = UserProfileSampleApp;
-			productReference = 746508E028951782009B554D /* UserProfileSampleApp.app */;
+			productReference = 746508E028951782009B554D /* App.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -207,7 +207,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				746508DF28951782009B554D /* UserProfileSampleApp */,
+				746508DF28951782009B554D /* App */,
 			);
 		};
 /* End PBXProject section */
@@ -241,11 +241,11 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/UserProfileSampleApp/UI/Generated/R.generated.swift,
+				$SRCROOT/App/UI/Generated/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# https://github.com/mac-cain13/R.swift#first-install-rswift-binary-and-run-script-phase\nif mint list | grep -q 'R.swift'; then\n  mint run R.swift rswift generate \"$SRCROOT/UserProfileSampleApp/UI/Generated/R.generated.swift\"\nelse\n  echo \"error: R.swift not installed; run 'mint bootstrap' to install\"\n  return -1\nfi\n";
+			shellScript = "# https://github.com/mac-cain13/R.swift#first-install-rswift-binary-and-run-script-phase\nif mint list | grep -q 'R.swift'; then\n  mint run R.swift rswift generate \"$SRCROOT/App/UI/Generated/R.generated.swift\"\nelse\n  echo \"error: R.swift not installed; run 'mint bootstrap' to install\"\n  return -1\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -402,7 +402,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = contentBase;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"UserProfileSampleApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"App/Preview Content\"";
 				DEVELOPMENT_TEAM = BCHSN8LJQT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -431,7 +431,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = contentBase;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"UserProfileSampleApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"App/Preview Content\"";
 				DEVELOPMENT_TEAM = BCHSN8LJQT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -465,7 +465,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		746508EE28951783009B554D /* Build configuration list for PBXNativeTarget "UserProfileSampleApp" */ = {
+		746508EE28951783009B554D /* Build configuration list for PBXNativeTarget "App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				746508EF28951783009B554D /* Debug */,
