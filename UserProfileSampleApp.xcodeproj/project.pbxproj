@@ -18,6 +18,7 @@
 		74A51041289F878B0094E1C8 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A51040289F878B0094E1C8 /* Localizable.swift */; };
 		74A51049289F967A0094E1C8 /* Rswift+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A51048289F967A0094E1C8 /* Rswift+Extensions.swift */; };
 		74A5104B289F977D0094E1C8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74A5104A289F977D0094E1C8 /* Colors.xcassets */; };
+		74A5104E289F9E770094E1C8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 74A5104D289F9E770094E1C8 /* Alamofire */; };
 		74FC4EA928962B8F005B8B83 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FC4EA828962B8F005B8B83 /* UserSettings.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				74A5103D289F6E7D0094E1C8 /* Rswift in Frameworks */,
+				74A5104E289F9E770094E1C8 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +168,7 @@
 			name = UserProfileSampleApp;
 			packageProductDependencies = (
 				74A5103C289F6E7D0094E1C8 /* Rswift */,
+				74A5104D289F9E770094E1C8 /* Alamofire */,
 			);
 			productName = UserProfileSampleApp;
 			productReference = 746508E028951782009B554D /* UserProfileSampleApp.app */;
@@ -198,6 +201,7 @@
 			mainGroup = 746508D728951782009B554D;
 			packageReferences = (
 				74A5103B289F6E7D0094E1C8 /* XCRemoteSwiftPackageReference "R.swift" */,
+				74A5104C289F9E770094E1C8 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 746508E128951782009B554D /* Products */;
 			projectDirPath = "";
@@ -481,6 +485,14 @@
 				minimumVersion = 5.4.0;
 			};
 		};
+		74A5104C289F9E770094E1C8 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -488,6 +500,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 74A5103B289F6E7D0094E1C8 /* XCRemoteSwiftPackageReference "R.swift" */;
 			productName = Rswift;
+		};
+		74A5104D289F9E770094E1C8 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 74A5104C289F9E770094E1C8 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
