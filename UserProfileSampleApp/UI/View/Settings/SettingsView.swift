@@ -14,7 +14,7 @@ struct SettingsView: View {
     var body: some View {
         Form {
             HStack() {
-                Text("GITHUB_ID")
+                Text(R.string.localizable.githubId())
                 Spacer()
                 TextField("zrn-ns", text: $settings.userId)
                     .keyboardType(.emailAddress)
@@ -22,11 +22,11 @@ struct SettingsView: View {
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled(true)
             }.toolbar {
-                Button("RESET") {
+                Button(R.string.localizable.reset()) {
                     settings.reset()
                 }
             }
-        }.navigationTitle("SETTINGS")
+        }.navigationTitle(R.string.localizable.settings())
     }
 }
 

@@ -14,6 +14,8 @@
 		746508F7289535B9009B554D /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746508F6289535B9009B554D /* ColorPalette.swift */; };
 		746508FA28961986009B554D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746508F928961986009B554D /* SettingsView.swift */; };
 		74A51034289F5C8B0094E1C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 74A51036289F5C8B0094E1C8 /* Localizable.strings */; };
+		74A5103D289F6E7D0094E1C8 /* Rswift in Frameworks */ = {isa = PBXBuildFile; productRef = 74A5103C289F6E7D0094E1C8 /* Rswift */; };
+		74A5103F289F701B0094E1C8 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5103E289F701B0094E1C8 /* R.generated.swift */; };
 		74FC4EA928962B8F005B8B83 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FC4EA828962B8F005B8B83 /* UserSettings.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +29,7 @@
 		746508F928961986009B554D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		74A51035289F5C8B0094E1C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		74A51037289F5CA30094E1C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		74A5103E289F701B0094E1C8 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		74FC4EA828962B8F005B8B83 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -35,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74A5103D289F6E7D0094E1C8 /* Rswift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +85,7 @@
 		746508F228953557009B554D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				74A5103A289F6BBF0094E1C8 /* Generated */,
 				74A51031289F5B7E0094E1C8 /* Text */,
 				746508F428953597009B554D /* Color */,
 				746508F32895358F009B554D /* View */,
@@ -120,6 +125,14 @@
 			path = Text;
 			sourceTree = "<group>";
 		};
+		74A5103A289F6BBF0094E1C8 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				74A5103E289F701B0094E1C8 /* R.generated.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
 		74FC4EA728962B72005B8B83 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +148,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 746508EE28951783009B554D /* Build configuration list for PBXNativeTarget "UserProfileSampleApp" */;
 			buildPhases = (
+				74A51038289F6B370094E1C8 /* R.swift */,
 				746508DC28951782009B554D /* Sources */,
 				746508DD28951782009B554D /* Frameworks */,
 				746508DE28951782009B554D /* Resources */,
@@ -144,6 +158,9 @@
 			dependencies = (
 			);
 			name = UserProfileSampleApp;
+			packageProductDependencies = (
+				74A5103C289F6E7D0094E1C8 /* Rswift */,
+			);
 			productName = UserProfileSampleApp;
 			productReference = 746508E028951782009B554D /* UserProfileSampleApp.app */;
 			productType = "com.apple.product-type.application";
@@ -173,6 +190,9 @@
 				ja,
 			);
 			mainGroup = 746508D728951782009B554D;
+			packageReferences = (
+				74A5103B289F6E7D0094E1C8 /* XCRemoteSwiftPackageReference "R.swift" */,
+			);
 			productRefGroup = 746508E128951782009B554D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -195,6 +215,29 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		74A51038289F6B370094E1C8 /* R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = R.swift;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/UserProfileSampleApp/UI/Generated/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# https://github.com/mac-cain13/R.swift#first-install-rswift-binary-and-run-script-phase\nif mint list | grep -q 'R.swift'; then\n  mint run R.swift rswift generate \"$SRCROOT/UserProfileSampleApp/UI/Generated/R.generated.swift\"\nelse\n  echo \"error: R.swift not installed; run 'mint bootstrap' to install\"\n  return -1\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		746508DC28951782009B554D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -205,6 +248,7 @@
 				746508FA28961986009B554D /* SettingsView.swift in Sources */,
 				746508E428951782009B554D /* UserProfileSampleAppApp.swift in Sources */,
 				746508F7289535B9009B554D /* ColorPalette.swift in Sources */,
+				74A5103F289F701B0094E1C8 /* R.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +463,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		74A5103B289F6E7D0094E1C8 /* XCRemoteSwiftPackageReference "R.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mac-cain13/R.swift.Library";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		74A5103C289F6E7D0094E1C8 /* Rswift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 74A5103B289F6E7D0094E1C8 /* XCRemoteSwiftPackageReference "R.swift" */;
+			productName = Rswift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 746508D828951782009B554D /* Project object */;
 }
