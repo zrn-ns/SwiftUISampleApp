@@ -24,8 +24,8 @@ final class UserSettings: ObservableObject {
 
     fileprivate init(suiteName: String? = nil) {
         self.suiteName = suiteName ?? Bundle.main.bundleIdentifier!
-        self.userDefaults = .init(suiteName: suiteName)!
         self.userId = UserDefaults.standard.value(forKey: "userId") as? String ?? ""
+        userDefaults = .init(suiteName: suiteName)!
     }
 
     private var userDefaults: UserDefaults
