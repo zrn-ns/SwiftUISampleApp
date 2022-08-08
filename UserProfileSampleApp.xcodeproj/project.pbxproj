@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		746508E428951782009B554D /* UserProfileSampleAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746508E328951782009B554D /* UserProfileSampleAppApp.swift */; };
-		746508E628951782009B554D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746508E528951782009B554D /* ContentView.swift */; };
+		746508E628951782009B554D /* RepositoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746508E528951782009B554D /* RepositoryListView.swift */; };
 		746508E828951783009B554D /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 746508E728951783009B554D /* Icons.xcassets */; };
 		746508EB28951783009B554D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 746508EA28951783009B554D /* Preview Assets.xcassets */; };
 		746508FA28961986009B554D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746508F928961986009B554D /* SettingsView.swift */; };
@@ -61,7 +61,7 @@
 /* Begin PBXFileReference section */
 		746508E028951782009B554D /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		746508E328951782009B554D /* UserProfileSampleAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileSampleAppApp.swift; sourceTree = "<group>"; };
-		746508E528951782009B554D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		746508E528951782009B554D /* RepositoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListView.swift; sourceTree = "<group>"; };
 		746508E728951783009B554D /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		746508EA28951783009B554D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		746508F928961986009B554D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -131,7 +131,7 @@
 				74FC4EA728962B72005B8B83 /* Model */,
 				746508F228953557009B554D /* UI */,
 				746508E328951782009B554D /* UserProfileSampleAppApp.swift */,
-				746508E528951782009B554D /* ContentView.swift */,
+				746508E528951782009B554D /* RepositoryListView.swift */,
 				746508E728951783009B554D /* Icons.xcassets */,
 				746508E928951783009B554D /* Preview Content */,
 			);
@@ -400,7 +400,7 @@
 				74FC4EA928962B8F005B8B83 /* UserSettings.swift in Sources */,
 				74A51041289F878B0094E1C8 /* Localizable.swift in Sources */,
 				74A5108A289FF0FB0094E1C8 /* ReloadableErrorView.swift in Sources */,
-				746508E628951782009B554D /* ContentView.swift in Sources */,
+				746508E628951782009B554D /* RepositoryListView.swift in Sources */,
 				746508FA28961986009B554D /* SettingsView.swift in Sources */,
 				74A51049289F967A0094E1C8 /* Rswift+Extensions.swift in Sources */,
 				74A5108C28A081580094E1C8 /* LoadState.swift in Sources */,

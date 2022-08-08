@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  RepositoryListView.swift
 //  UserProfileSampleApp
 //
 //  Created by zrn_ns on 2022/07/30.
@@ -8,7 +8,7 @@
 import APIClient
 import SwiftUI
 
-struct ContentView: View {
+struct RepositoryListView: View {
     @ObservedObject var settings: UserSettings
     @State var loadState: LoadState = .normal
 
@@ -63,8 +63,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct RepositoryLostView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(settings: UserSettings.sharedForPreview)
+        RepositoryListView(settings: UserSettings.sharedForPreview)
     }
 }
