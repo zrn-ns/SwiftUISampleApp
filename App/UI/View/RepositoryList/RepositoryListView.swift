@@ -9,21 +9,17 @@ import APIClient
 import SwiftUI
 
 struct RepositoryListView: View {
-    #warning("設定されたユーザIDが変化していたら、リロードをかける")
     @ObservedObject var settings: UserSettings
     @State var loadState: LoadState? = nil
     @State var repositories: [MinimalRepository] = []
+    @State var userId: String?
 
     var body: some View {
         NavigationView {
             VStack {
                 switch loadState {
                 case .none:
-                    // NOTE: EmptyViewでもよさそうだが、onAppearが呼ばれなくなってしまったのでVStackを使っている
-                    VStack {}
-                        .onAppear {
-                            reloadData()
-                        }
+                    EmptyView()
 
                 case .normal:
                     List(repositories) { repo in
@@ -48,17 +44,27 @@ struct RepositoryListView: View {
                     Image(systemName: "gearshape")
                 })
                 #warning("リロードボタンを付ける")
+            }.onAppear {
+                if self.userId != settings.userId {
+                    // userIdが変化していたら、リロードをかける
+                    self.userId = settings.userId
+                    reloadData()
+                }
             }
         }
     }
 
+    // MARK: - private
+
     private func reloadData() {
         Task {
+            guard let userId else { return }
+
             changeLoadStateSafetyAnimated(loadState: .loading)
 
             #warning("ユーザの詳細も一緒に取得し、画面のタイトルにユーザの情報を表示する")
             #warning("ページングを実装")
-            let result = await APIClient.send(GetRepositoryListRequest(userId: settings.userId))
+            let result = await APIClient.send(GetRepositoryListRequest(userId: userId))
             switch result {
             case .success(let response):
                 changeLoadStateSafetyAnimated(loadState: .normal)
