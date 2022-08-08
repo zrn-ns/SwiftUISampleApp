@@ -31,7 +31,7 @@ struct RepositoryListView: View {
                         } label: {
                             RepositoryListItemView(repository: repo)
                         }
-                    }
+                    }.listStyle(.plain)
                 case .loading:
                     ProgressView(Localizable.loading())
 
