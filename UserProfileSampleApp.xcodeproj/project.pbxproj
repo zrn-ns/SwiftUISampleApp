@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7435959628A0BB0F00BABC18 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7435959528A0BB0F00BABC18 /* WebView.swift */; };
 		746508E428951782009B554D /* UserProfileSampleAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746508E328951782009B554D /* UserProfileSampleAppApp.swift */; };
 		746508E628951782009B554D /* RepositoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746508E528951782009B554D /* RepositoryListView.swift */; };
 		746508E828951783009B554D /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 746508E728951783009B554D /* Icons.xcassets */; };
@@ -60,6 +61,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7435959528A0BB0F00BABC18 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		746508E028951782009B554D /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		746508E328951782009B554D /* UserProfileSampleAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileSampleAppApp.swift; sourceTree = "<group>"; };
 		746508E528951782009B554D /* RepositoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListView.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				74A51089289FF0FB0094E1C8 /* ReloadableErrorView.swift */,
+				7435959528A0BB0F00BABC18 /* WebView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				746508FA28961986009B554D /* SettingsView.swift in Sources */,
 				74A51049289F967A0094E1C8 /* Rswift+Extensions.swift in Sources */,
 				74A5108C28A081580094E1C8 /* LoadState.swift in Sources */,
+				7435959628A0BB0F00BABC18 /* WebView.swift in Sources */,
 				746508E428951782009B554D /* UserProfileSampleAppApp.swift in Sources */,
 				74A5103F289F701B0094E1C8 /* R.generated.swift in Sources */,
 			);
