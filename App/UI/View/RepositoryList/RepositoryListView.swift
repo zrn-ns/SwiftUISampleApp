@@ -9,6 +9,7 @@ import APIClient
 import SwiftUI
 
 struct RepositoryListView: View {
+    #warning("設定されたユーザIDが変化していたら、リロードをかける")
     @ObservedObject var settings: UserSettings
     @State var loadState: LoadState? = nil
     @State var repositories: [MinimalRepository] = []
@@ -46,6 +47,7 @@ struct RepositoryListView: View {
                 NavigationLink(destination: SettingsView(settings: settings), label: {
                     Image(systemName: "gearshape")
                 })
+                #warning("リロードボタンを付ける")
             }
         }
     }
@@ -54,6 +56,8 @@ struct RepositoryListView: View {
         Task {
             changeLoadStateSafetyAnimated(loadState: .loading)
 
+            #warning("ユーザの詳細も一緒に取得し、画面のタイトルにユーザの情報を表示する")
+            #warning("ページングを実装")
             let result = await APIClient.send(GetRepositoryListRequest(userId: settings.userId))
             switch result {
             case .success(let response):

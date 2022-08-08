@@ -14,6 +14,7 @@ struct RepositoryListItemView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
+                #warning("文字色がちょっと薄いので修正")
                 Text(repository.name)
                     .font(.title)
                     .foregroundColor(R.color.typoNormal.color)
@@ -30,6 +31,7 @@ struct RepositoryListItemView: View {
                         .lineLimit(1)
                 }
                 Spacer()
+                #warning("desriptionが長いときにlanguageが潰れないようにする")
                 if let lang = repository.language {
                     Text(lang)
                         .font(.subheadline)
