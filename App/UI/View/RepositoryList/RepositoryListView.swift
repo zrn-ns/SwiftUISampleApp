@@ -11,6 +11,7 @@ import SwiftUI
 struct RepositoryListView: View {
     @ObservedObject var settings: UserSettings
     @State var loadState: LoadState? = nil
+    @State var repositories: [MinimalRepository] = []
 
     var body: some View {
         NavigationView {
@@ -24,9 +25,12 @@ struct RepositoryListView: View {
                         }
 
                 case .normal:
-                    #warning("書き換え予定")
-                    Button("Load completed") {
-                        reloadData()
+                    List(repositories) { repo in
+                        NavigationLink {
+                            WebView(url: URL(string: repo.url)!)
+                        } label: {
+                            RepositoryListItemView(repository: repo)
+                        }
                     }
                 case .loading:
                     ProgressView(Localizable.loading())
@@ -52,11 +56,11 @@ struct RepositoryListView: View {
 
             let result = await APIClient.send(GetRepositoryListRequest(userId: settings.userId))
             switch result {
-            case .success(let success):
+            case .success(let response):
                 changeLoadStateSafetyAnimated(loadState: .normal)
-                print(success)
-            case .failure(let failure):
-                changeLoadStateSafetyAnimated(loadState: .error(failure))
+                repositories = response
+            case .failure(let error):
+                changeLoadStateSafetyAnimated(loadState: .error(error))
             }
         }
     }

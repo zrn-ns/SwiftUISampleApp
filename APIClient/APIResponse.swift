@@ -8,3 +8,5 @@
 import Foundation
 
 public protocol APIResponse: Decodable {}
+
+extension Array: APIResponse where Element: APIResponse {}

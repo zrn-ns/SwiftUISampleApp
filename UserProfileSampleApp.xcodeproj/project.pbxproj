@@ -32,6 +32,7 @@
 		74A51083289FECCD0094E1C8 /* APIMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A51082289FECCD0094E1C8 /* APIMethod.swift */; };
 		74A5108A289FF0FB0094E1C8 /* ReloadableErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A51089289FF0FB0094E1C8 /* ReloadableErrorView.swift */; };
 		74A5108C28A081580094E1C8 /* LoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5108B28A081580094E1C8 /* LoadState.swift */; };
+		74A5109228A09D300094E1C8 /* RepositoryListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5109128A09D300094E1C8 /* RepositoryListItemView.swift */; };
 		74A5109428A0A1700094E1C8 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A5109328A0A1700094E1C8 /* APIResponse.swift */; };
 		74FC4EA928962B8F005B8B83 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FC4EA828962B8F005B8B83 /* UserSettings.swift */; };
 /* End PBXBuildFile section */
@@ -85,6 +86,7 @@
 		74A51082289FECCD0094E1C8 /* APIMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMethod.swift; sourceTree = "<group>"; };
 		74A51089289FF0FB0094E1C8 /* ReloadableErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadableErrorView.swift; sourceTree = "<group>"; };
 		74A5108B28A081580094E1C8 /* LoadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadState.swift; sourceTree = "<group>"; };
+		74A5109128A09D300094E1C8 /* RepositoryListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListItemView.swift; sourceTree = "<group>"; };
 		74A5109328A0A1700094E1C8 /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		74FC4EA828962B8F005B8B83 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -247,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				746508E528951782009B554D /* RepositoryListView.swift */,
+				74A5109128A09D300094E1C8 /* RepositoryListItemView.swift */,
 			);
 			path = RepositoryList;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				74FC4EA928962B8F005B8B83 /* UserSettings.swift in Sources */,
 				74A51041289F878B0094E1C8 /* Localizable.swift in Sources */,
 				74A5108A289FF0FB0094E1C8 /* ReloadableErrorView.swift in Sources */,
+				74A5109228A09D300094E1C8 /* RepositoryListItemView.swift in Sources */,
 				746508E628951782009B554D /* RepositoryListView.swift in Sources */,
 				746508FA28961986009B554D /* SettingsView.swift in Sources */,
 				74A51049289F967A0094E1C8 /* Rswift+Extensions.swift in Sources */,
