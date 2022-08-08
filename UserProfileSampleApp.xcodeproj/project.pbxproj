@@ -131,7 +131,6 @@
 				74FC4EA728962B72005B8B83 /* Model */,
 				746508F228953557009B554D /* UI */,
 				746508E328951782009B554D /* UserProfileSampleAppApp.swift */,
-				746508E528951782009B554D /* RepositoryListView.swift */,
 				746508E728951783009B554D /* Icons.xcassets */,
 				746508E928951783009B554D /* Preview Content */,
 			);
@@ -160,8 +159,9 @@
 		746508F32895358F009B554D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				74A5108E28A09CC10094E1C8 /* Common */,
+				74A5108D28A09CB50094E1C8 /* RepositoryList */,
 				746508F82896196A009B554D /* Settings */,
-				74A51089289FF0FB0094E1C8 /* ReloadableErrorView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -236,6 +236,22 @@
 				74A51080289FBE980094E1C8 /* MinimalRepositoryResponse.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		74A5108D28A09CB50094E1C8 /* RepositoryList */ = {
+			isa = PBXGroup;
+			children = (
+				746508E528951782009B554D /* RepositoryListView.swift */,
+			);
+			path = RepositoryList;
+			sourceTree = "<group>";
+		};
+		74A5108E28A09CC10094E1C8 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				74A51089289FF0FB0094E1C8 /* ReloadableErrorView.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		74FC4EA728962B72005B8B83 /* Model */ = {
