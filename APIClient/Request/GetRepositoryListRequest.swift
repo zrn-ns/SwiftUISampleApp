@@ -8,7 +8,7 @@
 import Foundation
 
 public struct GetRepositoryListRequest: APIRequest {
-    public typealias Response = [MinimalRepositoryResponse]
+    public typealias Response = [MinimalRepository]
 
     public var url: URL {
         guard let encodedUserId: String = userId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {

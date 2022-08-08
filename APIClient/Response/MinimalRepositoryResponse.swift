@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct MinimalRepositoryResponse: Decodable {
+public struct MinimalRepository: APIResponse {
     let id: Int
     let name: String
     let description: String?

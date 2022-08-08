@@ -9,7 +9,7 @@ import Alamofire
 import Foundation
 
 public protocol APIRequest {
-    associatedtype Response: Decodable
+    associatedtype Response: APIResponse
 
     var url: URL { get }
     var method: APIMethod { get }
