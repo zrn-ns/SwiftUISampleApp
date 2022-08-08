@@ -13,4 +13,5 @@ public struct MinimalRepository: APIResponse {
     let description: String?
     let language: String?
     let url: String
+    public let stargazersCount: Int
 }
