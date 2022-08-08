@@ -10,15 +10,22 @@ import SwiftUI
 
 struct RepositoryListView: View {
     @ObservedObject var settings: UserSettings
-    @State var loadState: LoadState = .normal
+    @State var loadState: LoadState? = nil
 
     var body: some View {
         NavigationView {
             VStack {
                 switch loadState {
+                case .none:
+                    // NOTE: EmptyViewでもよさそうだが、onAppearが呼ばれなくなってしまったのでVStackを使っている
+                    VStack {}
+                        .onAppear {
+                            reloadData()
+                        }
+
                 case .normal:
                     #warning("書き換え予定")
-                    Button("Send Request") {
+                    Button("Load completed") {
                         reloadData()
                     }
                 case .loading:
