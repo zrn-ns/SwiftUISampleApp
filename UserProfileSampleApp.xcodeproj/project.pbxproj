@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7435959628A0BB0F00BABC18 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7435959528A0BB0F00BABC18 /* WebView.swift */; };
+		7435959928A4974A00BABC18 /* Binding+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7435959828A4974A00BABC18 /* Binding+Extensions.swift */; };
 		746508E428951782009B554D /* UserProfileSampleAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746508E328951782009B554D /* UserProfileSampleAppApp.swift */; };
 		746508E628951782009B554D /* RepositoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746508E528951782009B554D /* RepositoryListView.swift */; };
 		746508E828951783009B554D /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 746508E728951783009B554D /* Icons.xcassets */; };
@@ -63,6 +64,7 @@
 
 /* Begin PBXFileReference section */
 		7435959528A0BB0F00BABC18 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		7435959828A4974A00BABC18 /* Binding+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extensions.swift"; sourceTree = "<group>"; };
 		746508E028951782009B554D /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		746508E328951782009B554D /* UserProfileSampleAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileSampleAppApp.swift; sourceTree = "<group>"; };
 		746508E528951782009B554D /* RepositoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListView.swift; sourceTree = "<group>"; };
@@ -112,6 +114,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7435959728A4973800BABC18 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				7435959828A4974A00BABC18 /* Binding+Extensions.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		746508D728951782009B554D = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +164,7 @@
 		746508F228953557009B554D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				7435959728A4973800BABC18 /* Extension */,
 				74A5103A289F6BBF0094E1C8 /* Generated */,
 				74A51031289F5B7E0094E1C8 /* Text */,
 				746508F428953597009B554D /* Color */,
@@ -431,6 +442,7 @@
 				74A51049289F967A0094E1C8 /* Rswift+Extensions.swift in Sources */,
 				74A5108C28A081580094E1C8 /* LoadState.swift in Sources */,
 				7435959628A0BB0F00BABC18 /* WebView.swift in Sources */,
+				7435959928A4974A00BABC18 /* Binding+Extensions.swift in Sources */,
 				746508E428951782009B554D /* UserProfileSampleAppApp.swift in Sources */,
 				74A5103F289F701B0094E1C8 /* R.generated.swift in Sources */,
 			);
