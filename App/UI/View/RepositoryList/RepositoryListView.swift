@@ -51,6 +51,8 @@ struct RepositoryListView: View {
                     reloadData()
                 }
             }
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle(userId ?? "")
         }
     }
 
