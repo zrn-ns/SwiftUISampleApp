@@ -30,6 +30,7 @@ struct RepositoryListView: View {
                             RepositoryListItemView(repository: repo)
                         }
                     }.listStyle(.plain)
+                        .refreshable { reloadData() }
                 case .loading:
                     ProgressView(Localizable.loading())
 
@@ -44,7 +45,7 @@ struct RepositoryListView: View {
                 NavigationLink(destination: SettingsView(settings: settings), label: {
                     Image(systemName: "gearshape")
                 })
-                #warning("リロードボタンを付ける")
+
             }.onAppear {
                 if self.userId != settings.userId {
                     // userIdが変化していたら、リロードをかける
