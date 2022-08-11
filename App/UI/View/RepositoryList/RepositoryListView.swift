@@ -25,7 +25,7 @@ struct RepositoryListView: View {
                 case .normal:
                     List(repositories) { repo in
                         NavigationLink {
-                            WebView(url: URL(string: repo.htmlUrl)!)
+                            WebView(url: repo.htmlUrl)
                         } label: {
                             RepositoryListItemView(repository: repo)
                         }

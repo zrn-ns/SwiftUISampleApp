@@ -51,7 +51,7 @@ struct RepositoryListItemView_Previews: PreviewProvider {
                                                              description: "🎉Repo Description",
                                                              language: "Swift",
                                                              stargazersCount: 3,
-                                                             htmlUrl: "https://google.com/"))
+                                                             htmlUrl: URL(string: "https://google.com/")!))
         .previewLayout(.sizeThatFits)
         .frame(width: 320)
     }

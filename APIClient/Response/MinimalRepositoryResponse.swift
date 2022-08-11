@@ -13,7 +13,7 @@ public struct MinimalRepository: APIResponse {
     public let description: String?
     public let language: String?
     public let stargazersCount: Int
-    public let htmlUrl: String
+    public let htmlUrl: URL
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -24,7 +24,7 @@ public struct MinimalRepository: APIResponse {
         case htmlUrl = "html_url"
     }
 
-    public init(id: Int, name: String, description: String?, language: String?, stargazersCount: Int, htmlUrl: String) {
+    public init(id: Int, name: String, description: String?, language: String?, stargazersCount: Int, htmlUrl: URL) {
         self.id = id
         self.name = name
         self.description = description
