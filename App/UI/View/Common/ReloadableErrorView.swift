@@ -13,7 +13,9 @@ struct ReloadableErrorView: View {
 
     var body: some View {
         VStack(alignment: .center, spacing: 10) {
-            Text(errorMessage).multilineTextAlignment(.center)
+            Text(errorMessage)
+                .multilineTextAlignment(.center)
+                .foregroundColor(R.color.typoNormal.color)
             Button(Localizable.reload()) {
                 tapReloadHandler?()
             }

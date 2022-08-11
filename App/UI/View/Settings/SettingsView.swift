@@ -15,12 +15,14 @@ struct SettingsView: View {
         Form {
             HStack() {
                 Text(Localizable.githubId())
+                    .foregroundColor(R.color.typoNormal.color)
                 Spacer()
                 TextField("zrn-ns", text: $settings.userId)
                     .keyboardType(.emailAddress)
                     .multilineTextAlignment(.trailing)
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled(true)
+                    .foregroundColor(R.color.typoNormal.color)
             }.toolbar {
                 Button(Localizable.reset()) {
                     settings.reset()
