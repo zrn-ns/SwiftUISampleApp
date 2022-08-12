@@ -14,7 +14,6 @@ struct RepositoryListItemView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                #warning("文字色がちょっと薄いので修正")
                 Text(repository.name)
                     .font(.title)
                     .foregroundColor(R.color.typoNormal.color)
