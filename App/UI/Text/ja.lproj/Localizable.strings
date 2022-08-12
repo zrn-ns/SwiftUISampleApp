@@ -11,4 +11,9 @@
 "reload" = "再読み込み";
 "reset" = "リセット";
 "settings" = "設定";
+"sort property" = "並び替え";
+"sort property created at" = "作成日時";
+"sort property full name" = "リポジトリ名";
+"sort property pushed at" = "最終Push日時";
+"sort property updated at" = "最終更新日時";
 "without fork" = "Forkを除外する";

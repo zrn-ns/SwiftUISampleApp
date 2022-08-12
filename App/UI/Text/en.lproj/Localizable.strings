@@ -11,4 +11,9 @@
 "reload" = "Reload";
 "reset" = "Reset";
 "settings" = "Settings";
+"sort property" = "Sorted by";
+"sort property created at" = "Created Date";
+"sort property full name" = "Repository name";
+"sort property pushed at" = "Pushed Date";
+"sort property updated at" = "Updated Date";
 "without fork" = "Without fork repositories";

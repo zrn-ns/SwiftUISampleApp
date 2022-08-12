@@ -5,6 +5,7 @@
 //  Created by zrn_ns on 2022/07/31.
 //
 
+import APIClient
 import Foundation
 import SwiftUI
 
@@ -29,6 +30,16 @@ struct SettingsView: View {
                     .foregroundColor(R.color.typoNormal.color)
                 Spacer()
                 Toggle("", isOn: $settings.withoutFork)
+            }
+            HStack() {
+                Text(Localizable.sortProperty())
+                    .foregroundColor(R.color.typoNormal.color)
+                Spacer()
+                Picker("", selection: $settings.sortProperty) {
+                    ForEach(SortProperty.allCases, id: \.self) { prop in
+                        Text(prop.pickerText())
+                    }
+                }
             }.toolbar {
                 Button(Localizable.reset()) {
                     settings.reset()
