@@ -29,6 +29,7 @@ final class UserSettings: ObservableObject {
             userDefaults.setValue(sortProperty.rawValue, forKey: "sortProperty")
         }
     }
+    #warning("昇順/降順を変えられるようにする")
 
     func reset() {
         self.userId = ""
