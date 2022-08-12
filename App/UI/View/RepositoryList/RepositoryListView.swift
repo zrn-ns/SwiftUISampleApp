@@ -11,9 +11,10 @@ import SwiftUI
 struct RepositoryListView: View {
     @ObservedObject var settings: UserSettings
     @State var loadState: LoadState? = nil
+    @State var userId: String?
     #warning("Forkをfilterできるようにする")
     @State var repositories: [MinimalRepository] = []
-    @State var userId: String?
+    @State var user: User?
 
     var body: some View {
         NavigationView {
@@ -42,9 +43,15 @@ struct RepositoryListView: View {
                 }
 
             }.toolbar {
-                NavigationLink(destination: SettingsView(settings: settings), label: {
-                    Image(systemName: "gearshape")
-                })
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: SettingsView(settings: settings), label: {
+                        Image(systemName: "gearshape")
+                    })
+                }
+                ToolbarItem(placement: .principal) {
+                    UserInfoNavigationItemView(userIconURL: user?.avatarUrl,
+                                               userName: user?.login)
+                }
 
             }.onAppear {
                 if self.userId != settings.userId {
@@ -54,7 +61,6 @@ struct RepositoryListView: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle(userId ?? "")
         }
     }
 
@@ -66,16 +72,19 @@ struct RepositoryListView: View {
 
             changeLoadStateSafetyAnimated(loadState: .loading)
 
-            #warning("ユーザの詳細も一緒に取得し、画面のタイトルにユーザの情報を表示する")
             #warning("ページングを実装")
             do {
                 async let repositories = APIClient.sendAsync(GetRepositoryListRequest(userId: userId))
+                async let user = APIClient.sendAsync(GetUserRequest(userId: userId))
+
                 changeLoadStateSafetyAnimated(loadState: .normal)
                 self.repositories = try await repositories
+                self.user = try await user
 
             } catch let error as APIError {
                 changeLoadStateSafetyAnimated(loadState: .error(error))
                 self.repositories = []
+                self.user = nil
             }
         }
     }
