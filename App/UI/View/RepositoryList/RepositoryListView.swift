@@ -16,6 +16,7 @@ struct RepositoryListView: View {
     @State var userId: String?
     @State var withoutFork: Bool?
     @State var sortProperty: SortProperty?
+    @State var currentPage: Int?
 
     @State var repositories: [MinimalRepository] = []
     @State var user: User?
@@ -81,10 +82,13 @@ struct RepositoryListView: View {
                   let sortProperty else { return }
 
             changeLoadStateSafetyAnimated(loadState: .loading)
+            self.currentPage = nil
 
             #warning("ページングを実装")
             do {
-                async let repositories = APIClient.sendAsync(GetRepositoryListRequest(userId: userId, sortProperty: sortProperty))
+                async let repositories = APIClient.sendAsync(GetRepositoryListRequest(userId: userId,
+                                                                                      sortProperty: sortProperty,
+                                                                                      currentPage: currentPage))
                 async let user = APIClient.sendAsync(GetUserRequest(userId: userId))
 
                 changeLoadStateSafetyAnimated(loadState: .normal)

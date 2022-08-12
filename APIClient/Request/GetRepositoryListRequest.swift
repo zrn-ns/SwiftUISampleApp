@@ -18,16 +18,19 @@ public struct GetRepositoryListRequest: APIRequest {
     }
     public var method: APIMethod = .get
     public var params: Params? {
-        ["sort": sortProperty.toAPIValue()]
+        ["sort": sortProperty.toAPIValue(),
+         "page": "\(currentPage + 1)"]
     }
 
-    public init(userId: String, sortProperty: SortProperty) {
+    public init(userId: String, sortProperty: SortProperty, currentPage: Int?) {
         self.userId = userId
         self.sortProperty = sortProperty
+        self.currentPage = currentPage ?? 0
     }
 
     // MARK: - private
 
     private let userId: String
     private let sortProperty: SortProperty
+    private let currentPage: Int
 }
