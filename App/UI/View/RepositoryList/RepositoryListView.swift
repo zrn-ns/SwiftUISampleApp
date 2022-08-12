@@ -68,13 +68,14 @@ struct RepositoryListView: View {
 
             #warning("ユーザの詳細も一緒に取得し、画面のタイトルにユーザの情報を表示する")
             #warning("ページングを実装")
-            let result = await APIClient.send(GetRepositoryListRequest(userId: userId))
-            switch result {
-            case .success(let response):
+            do {
+                async let repositories = APIClient.sendAsync(GetRepositoryListRequest(userId: userId))
                 changeLoadStateSafetyAnimated(loadState: .normal)
-                repositories = response
-            case .failure(let error):
+                self.repositories = try await repositories
+
+            } catch let error as APIError {
                 changeLoadStateSafetyAnimated(loadState: .error(error))
+                self.repositories = []
             }
         }
     }
