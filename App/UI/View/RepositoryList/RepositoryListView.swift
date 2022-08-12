@@ -15,6 +15,7 @@ struct RepositoryListView: View {
     #warning("更新条件が増えてきて管理しづらくなってきたので、まとめる")
     @State var userId: String?
     @State var withoutFork: Bool?
+    @State var sortProperty: SortProperty?
 
     @State var repositories: [MinimalRepository] = []
     @State var user: User?
@@ -58,10 +59,12 @@ struct RepositoryListView: View {
 
             }.onAppear {
                 if self.userId != settings.userId
-                    || self.withoutFork != settings.withoutFork {
+                    || self.withoutFork != settings.withoutFork
+                    || self.sortProperty != settings.sortProperty {
                     // 設定が更新されていたらリロードをかける
                     self.userId = settings.userId
                     self.withoutFork = settings.withoutFork
+                    self.sortProperty = settings.sortProperty
                     reloadData()
                 }
             }
@@ -74,13 +77,14 @@ struct RepositoryListView: View {
     private func reloadData() {
         Task {
             guard let userId,
-                let withoutFork else { return }
+                  let withoutFork,
+                  let sortProperty else { return }
 
             changeLoadStateSafetyAnimated(loadState: .loading)
 
             #warning("ページングを実装")
             do {
-                async let repositories = APIClient.sendAsync(GetRepositoryListRequest(userId: userId))
+                async let repositories = APIClient.sendAsync(GetRepositoryListRequest(userId: userId, sortProperty: sortProperty))
                 async let user = APIClient.sendAsync(GetUserRequest(userId: userId))
 
                 changeLoadStateSafetyAnimated(loadState: .normal)

@@ -17,13 +17,17 @@ public struct GetRepositoryListRequest: APIRequest {
         return .init(string: "https://api.github.com/users/\(encodedUserId)/repos")!
     }
     public var method: APIMethod = .get
-    public var params: [String: String]? = nil
+    public var params: Params? {
+        ["sort": sortProperty.toAPIValue()]
+    }
 
-    public init(userId: String) {
+    public init(userId: String, sortProperty: SortProperty) {
         self.userId = userId
+        self.sortProperty = sortProperty
     }
 
     // MARK: - private
 
     private let userId: String
+    private let sortProperty: SortProperty
 }
