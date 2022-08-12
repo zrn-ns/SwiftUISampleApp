@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct ReloadableErrorView: View {
-    #warning("変更しないので@Stateいらないはず")
-    @State var errorMessage: String
-    var tapReloadHandler: (() -> Void)?
+    let errorMessage: String
+    let tapReloadHandler: (() -> Void)?
 
     var body: some View {
         VStack(alignment: .center, spacing: 10) {
