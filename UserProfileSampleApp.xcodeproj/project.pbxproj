@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		74305B9728A628D500B89DB2 /* SortProperty+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74305B9628A628D500B89DB2 /* SortProperty+Extension.swift */; };
+		74305BB528A6644B00B89DB2 /* PagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74305BB428A6644B00B89DB2 /* PagingView.swift */; };
 		7435959628A0BB0F00BABC18 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7435959528A0BB0F00BABC18 /* WebView.swift */; };
 		7435959928A4974A00BABC18 /* Binding+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7435959828A4974A00BABC18 /* Binding+Extensions.swift */; };
 		7435959B28A4A95500BABC18 /* GetUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7435959A28A4A95500BABC18 /* GetUserRequest.swift */; };
@@ -70,6 +71,7 @@
 
 /* Begin PBXFileReference section */
 		74305B9628A628D500B89DB2 /* SortProperty+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SortProperty+Extension.swift"; sourceTree = "<group>"; };
+		74305BB428A6644B00B89DB2 /* PagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingView.swift; sourceTree = "<group>"; };
 		7435959528A0BB0F00BABC18 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		7435959828A4974A00BABC18 /* Binding+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extensions.swift"; sourceTree = "<group>"; };
 		7435959A28A4A95500BABC18 /* GetUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserRequest.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 		74A5108E28A09CC10094E1C8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				74305BB428A6644B00B89DB2 /* PagingView.swift */,
 				74A51089289FF0FB0094E1C8 /* ReloadableErrorView.swift */,
 				7435959528A0BB0F00BABC18 /* WebView.swift */,
 				743595A328A5F74500BABC18 /* UserInfoNavigationItemView.swift */,
@@ -463,6 +466,7 @@
 				74FC4EA928962B8F005B8B83 /* UserSettings.swift in Sources */,
 				74A51041289F878B0094E1C8 /* Localizable.swift in Sources */,
 				74A5108A289FF0FB0094E1C8 /* ReloadableErrorView.swift in Sources */,
+				74305BB528A6644B00B89DB2 /* PagingView.swift in Sources */,
 				74A5109228A09D300094E1C8 /* RepositoryListItemView.swift in Sources */,
 				746508E628951782009B554D /* RepositoryListView.swift in Sources */,
 				746508FA28961986009B554D /* SettingsView.swift in Sources */,
