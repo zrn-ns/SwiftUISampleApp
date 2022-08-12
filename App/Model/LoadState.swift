@@ -10,6 +10,16 @@ import Foundation
 
 enum LoadState: Equatable {
     case normal
+    case paging
     case loading
     case error(APIError)
+
+    func isNotFetching() -> Bool {
+        switch self {
+        case .normal, .error:
+            return true
+        case .paging, .loading:
+            return false
+        }
+    }
 }
