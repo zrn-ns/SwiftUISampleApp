@@ -17,7 +17,6 @@ public struct GetUserRequest: APIRequest {
         return .init(string: "https://api.github.com/users/\(encodedUserId)")!
     }
     public var method: APIMethod = .get
-    public var params: [String: String]? = nil
 
     public init(userId: String) {
         self.userId = userId
