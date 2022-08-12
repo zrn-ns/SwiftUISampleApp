@@ -36,14 +36,14 @@ struct RepositoryListView: View {
                             RepositoryListItemView(repository: repo)
                         }
                     }.listStyle(.plain)
-                        .refreshable { reloadData() }
+                        .refreshable { fetchAndReloadAll() }
                 case .loading:
                     ProgressView(Localizable.loading())
 
                 case .error(let apiError):
                     #warning("表示用のメッセージを出すように修正")
                     ReloadableErrorView(errorMessage: apiError.localizedDescription) {
-                        reloadData()
+                        fetchAndReloadAll()
                     }
                 }
 
@@ -66,7 +66,7 @@ struct RepositoryListView: View {
                     self.userId = settings.userId
                     self.withoutFork = settings.withoutFork
                     self.sortProperty = settings.sortProperty
-                    reloadData()
+                    fetchAndReloadAll()
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -75,7 +75,7 @@ struct RepositoryListView: View {
 
     // MARK: - private
 
-    private func reloadData() {
+    private func fetchAndReloadAll() {
         Task {
             guard let userId,
                   let withoutFork,
