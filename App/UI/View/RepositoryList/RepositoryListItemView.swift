@@ -31,12 +31,12 @@ struct RepositoryListItemView: View {
                         .lineLimit(1)
                 }
                 Spacer()
-                #warning("desriptionが長いときにlanguageが潰れないようにする")
                 if let lang = repository.language {
                     Text(lang)
                         .font(.subheadline)
                         .foregroundColor(R.color.typoNormal.color)
                         .lineLimit(1)
+                        .layoutPriority(.infinity)
                 }
             }
         }.padding(.all, 8)
@@ -48,7 +48,7 @@ struct RepositoryListItemView_Previews: PreviewProvider {
     static var previews: some View {
         RepositoryListItemView(repository: MinimalRepository(id: 1,
                                                              name: "repo_name",
-                                                             description: "🎉Repo Description",
+                                                             description: "🎉Repo Description hogehogehogehogehoge",
                                                              language: "Swift",
                                                              stargazersCount: 3,
                                                              htmlUrl: URL(string: "https://google.com/")!))
