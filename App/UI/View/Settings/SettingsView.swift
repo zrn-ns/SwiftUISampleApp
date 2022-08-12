@@ -23,6 +23,12 @@ struct SettingsView: View {
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled(true)
                     .foregroundColor(R.color.typoNormal.color)
+            }
+            HStack() {
+                Text(Localizable.withoutFork())
+                    .foregroundColor(R.color.typoNormal.color)
+                Spacer()
+                Toggle("", isOn: $settings.withoutFork)
             }.toolbar {
                 Button(Localizable.reset()) {
                     settings.reset()

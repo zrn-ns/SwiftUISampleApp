@@ -11,3 +11,4 @@
 "reload" = "Reload";
 "reset" = "Reset";
 "settings" = "Settings";
+"without fork" = "Without fork repositories";

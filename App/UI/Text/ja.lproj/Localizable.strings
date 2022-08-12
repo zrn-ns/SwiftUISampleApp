@@ -11,3 +11,4 @@
 "reload" = "再読み込み";
 "reset" = "リセット";
 "settings" = "設定";
+"without fork" = "Forkを除外する";

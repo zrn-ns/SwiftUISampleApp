@@ -11,8 +11,11 @@ import SwiftUI
 struct RepositoryListView: View {
     @ObservedObject var settings: UserSettings
     @State var loadState: LoadState? = nil
+
+    #warning("更新条件が増えてきて管理しづらくなってきたので、まとめる")
     @State var userId: String?
-    #warning("Forkをfilterできるようにする")
+    @State var withoutFork: Bool?
+
     @State var repositories: [MinimalRepository] = []
     @State var user: User?
 
@@ -54,9 +57,11 @@ struct RepositoryListView: View {
                 }
 
             }.onAppear {
-                if self.userId != settings.userId {
-                    // userIdが変化していたら、リロードをかける
+                if self.userId != settings.userId
+                    || self.withoutFork != settings.withoutFork {
+                    // 設定が更新されていたらリロードをかける
                     self.userId = settings.userId
+                    self.withoutFork = settings.withoutFork
                     reloadData()
                 }
             }
@@ -68,7 +73,8 @@ struct RepositoryListView: View {
 
     private func reloadData() {
         Task {
-            guard let userId else { return }
+            guard let userId,
+                let withoutFork else { return }
 
             changeLoadStateSafetyAnimated(loadState: .loading)
 
@@ -78,7 +84,13 @@ struct RepositoryListView: View {
                 async let user = APIClient.sendAsync(GetUserRequest(userId: userId))
 
                 changeLoadStateSafetyAnimated(loadState: .normal)
-                self.repositories = try await repositories
+                self.repositories = try await repositories.filter { repo in
+                    if withoutFork {
+                        return !repo.isFork
+                    } else {
+                        return true
+                    }
+                }
                 self.user = try await user
 
             } catch let error as APIError {
