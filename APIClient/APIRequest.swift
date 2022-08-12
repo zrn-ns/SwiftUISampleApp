@@ -13,10 +13,12 @@ public protocol APIRequest {
 
     var url: URL { get }
     var method: APIMethod { get }
-    var params: [String: String]? { get }
+    var params: Params? { get }
 }
 
 public extension APIRequest {
     var method: APIMethod { .get }
-    var params: [String: String]? { nil }
+    var params: Params? { return nil }
 }
+
+public typealias Params = [String: String]
