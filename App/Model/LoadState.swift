@@ -12,13 +12,4 @@ enum LoadState: Equatable {
     case normal
     case loading
     case error(APIError)
-
-    func isLoading() -> Bool {
-        switch self {
-        case .loading:
-            return true
-        case .normal, .error:
-            return false
-        }
-    }
 }
