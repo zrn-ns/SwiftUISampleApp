@@ -16,9 +16,7 @@ struct RepositoryListView: View {
     @State var userId: String?
     @State var withoutFork: Bool?
     @State var sortProperty: SortProperty?
-    #warning("Pagingに関する情報は一つのモデルに押し込める気がする")
-    @State var currentPage: Int?
-    @State var existsNextPage: Bool = false
+    @State var nextPagingParam: PagingParam?
 
     @State var repositories: [MinimalRepository] = []
     @State var user: User?
@@ -41,7 +39,8 @@ struct RepositoryListView: View {
                                 }
                             }
                         }
-                        if existsNextPage {
+                        if let nextPagingParam,
+                           nextPagingParam.hasNextPage {
                             Section {
                                 PagingView()
                                     .onAppear {
@@ -102,20 +101,18 @@ struct RepositoryListView: View {
                   let sortProperty else { return }
 
             changeLoadStateSafetyAnimated(loadState: .loading)
-            self.currentPage = nil
-            self.existsNextPage = false
+            self.nextPagingParam = nil
 
             do {
-                async let repositories = APIClient.sendAsync(GetRepositoryListRequest(userId: userId,
-                                                                                      sortProperty: sortProperty,
-                                                                                      currentPage: currentPage))
+                async let repositoryListResponse = APIClient.sendAsync(GetRepositoryListRequest(userId: userId,
+                                                                                      sortProperty: sortProperty))
                 async let user = APIClient.sendAsync(GetUserRequest(userId: userId))
 
-                let allResponses = try await (repos: repositories, user: user)
+                let allResponses = try await (repoListResponse: repositoryListResponse, user: user)
 
                 changeLoadStateSafetyAnimated(loadState: .normal)
 
-                self.repositories = allResponses.repos.filter { repo in
+                self.repositories = allResponses.repoListResponse.repositories.filter { repo in
                     if withoutFork {
                         return !repo.isFork
                     } else {
@@ -123,8 +120,7 @@ struct RepositoryListView: View {
                     }
                 }
                 self.user = allResponses.user
-                self.currentPage = 1
-                self.existsNextPage = !allResponses.repos.isEmpty
+                self.nextPagingParam = allResponses.repoListResponse.nextPagingParam
 
             } catch let error as APIError {
                 changeLoadStateSafetyAnimated(loadState: .error(error))
@@ -139,25 +135,24 @@ struct RepositoryListView: View {
             guard let userId,
                   let withoutFork,
                   let sortProperty,
-                  let currentPage else { return }
+                  let nextPagingParam else { return }
 
             changeLoadStateSafetyAnimated(loadState: .paging)
 
             do {
-                let repositories = try await APIClient.sendAsync(GetRepositoryListRequest(userId: userId,
-                                                                                          sortProperty: sortProperty,
-                                                                                          currentPage: currentPage))
+                let repositoryListResponse = try await APIClient.sendAsync(GetRepositoryListRequest(userId: userId,
+                                                                                                    sortProperty: sortProperty,
+                                                                                                    pagingParam: nextPagingParam))
 
                 changeLoadStateSafetyAnimated(loadState: .normal)
-                self.repositories = (self.repositories + repositories).filter { repo in
+                self.repositories = (self.repositories + repositoryListResponse.repositories).filter { repo in
                     if withoutFork {
                         return !repo.isFork
                     } else {
                         return true
                     }
                 }
-                self.currentPage = currentPage + 1
-                self.existsNextPage = !repositories.isEmpty
+                self.nextPagingParam = repositoryListResponse.nextPagingParam
 
             } catch let error as APIError {
                 changeLoadStateSafetyAnimated(loadState: .error(error))

@@ -19,18 +19,40 @@ public struct GetRepositoryListRequest: APIRequest {
     public var method: APIMethod = .get
     public var params: Params? {
         ["sort": sortProperty.toAPIValue(),
-         "page": "\(currentPage + 1)"]
+         "page": String(nextPage),
+         "per_page": String(itemsPerPage)]
     }
 
-    public init(userId: String, sortProperty: SortProperty, currentPage: Int?) {
+    public init(userId: String, sortProperty: SortProperty, pagingParam: PagingParam? = nil) {
         self.userId = userId
         self.sortProperty = sortProperty
-        self.currentPage = currentPage ?? 0
+        self.pagingParam = pagingParam
     }
 
     // MARK: - private
 
+    private let itemsPerPage: Int = 30
     private let userId: String
     private let sortProperty: SortProperty
-    private let currentPage: Int
+    private let pagingParam: PagingParam?
+
+    private var nextPage: Int {
+        guard let pagingParam else { return 1 }
+
+        return pagingParam.currentPage + 1
+    }
 }
+
+extension GetRepositoryListRequest: ResponseConvertible {
+    public struct Converted {
+        public let repositories: [MinimalRepository]
+        public let nextPagingParam: PagingParam
+    }
+
+    public func convert(_ response: [MinimalRepository]) -> Converted {
+        .init(repositories: response,
+              nextPagingParam: .init(currentPage: nextPage,
+                                     hasNextPage: response.count == itemsPerPage))
+    }
+}
+
