@@ -106,21 +106,21 @@ struct RepositoryListView: View {
             do {
                 async let repositoryListResponse = APIClient.sendAsync(GetRepositoryListRequest(userId: userId,
                                                                                       sortProperty: sortProperty))
-                async let user = APIClient.sendAsync(GetUserRequest(userId: userId))
+                async let userResponse = APIClient.sendAsync(GetUserRequest(userId: userId))
 
-                let allResponses = try await (repoListResponse: repositoryListResponse, user: user)
+                let responses = try await (repos: repositoryListResponse, user: userResponse)
 
                 changeLoadStateSafetyAnimated(loadState: .normal)
 
-                self.repositories = allResponses.repoListResponse.repositories.filter { repo in
+                self.repositories = responses.repos.repositories.filter { repo in
                     if withoutFork {
                         return !repo.isFork
                     } else {
                         return true
                     }
                 }
-                self.user = allResponses.user
-                self.nextPagingParam = allResponses.repoListResponse.nextPagingParam
+                self.user = responses.user
+                self.nextPagingParam = responses.repos.nextPagingParam
 
             } catch let error as APIError {
                 changeLoadStateSafetyAnimated(loadState: .error(error))
