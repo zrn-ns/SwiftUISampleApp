@@ -22,3 +22,12 @@ public extension APIRequest {
 }
 
 public typealias Params = [String: String]
+
+/// Responseを別のモデルとして受け取れるRequest。
+/// API側のモデルとアプリ側のモデルを切り分けたい場合や、リクエストに保持している
+/// プロパティをレスポンスに付加したい場合などに使う。
+public protocol ResponseConvertible: APIRequest {
+    associatedtype Converted
+
+    func convert(_ response: Response) -> Converted
+}
