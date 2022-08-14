@@ -40,7 +40,18 @@ struct SettingsView: View {
                         Text(prop.pickerText())
                     }
                 }
-            }.toolbar {
+            }
+            HStack() {
+                Text(Localizable.sortDirection())
+                    .foregroundColor(R.color.typoNormal.color)
+                Spacer()
+                Picker("", selection: $settings.sortDirection) {
+                    ForEach(SortDirection.pickerSelections(), id: \.self) { prop in
+                        Text(prop.pickerText())
+                    }
+                }
+            }
+            .toolbar {
                 Button(Localizable.reset()) {
                     settings.reset()
                 }

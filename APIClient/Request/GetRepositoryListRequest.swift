@@ -18,14 +18,19 @@ public struct GetRepositoryListRequest: APIRequest {
     }
     public var method: APIMethod = .get
     public var params: Params? {
-        ["sort": sortProperty.toAPIValue(),
-         "page": String(nextPage),
-         "per_page": String(itemsPerPage)]
+        var params: Params = ["sort": sortProperty.toAPIValue(),
+                              "page": String(nextPage),
+                              "per_page": String(itemsPerPage)]
+        if let direction = sortDirection.toAPIValue() {
+            params["direction"] = direction
+        }
+        return params
     }
 
-    public init(userId: String, sortProperty: SortProperty, pagingParam: PagingParam? = nil) {
+    public init(userId: String, sortProperty: SortProperty, sortDirection: SortDirection, pagingParam: PagingParam? = nil) {
         self.userId = userId
         self.sortProperty = sortProperty
+        self.sortDirection = sortDirection
         self.pagingParam = pagingParam
     }
 
@@ -34,6 +39,7 @@ public struct GetRepositoryListRequest: APIRequest {
     private let itemsPerPage: Int = 30
     private let userId: String
     private let sortProperty: SortProperty
+    private let sortDirection: SortDirection
     private let pagingParam: PagingParam?
 
     private var nextPage: Int {

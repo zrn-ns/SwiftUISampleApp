@@ -16,6 +16,7 @@ struct RepositoryListView: View {
     @State var userId: String?
     @State var withoutFork: Bool?
     @State var sortProperty: SortProperty?
+    @State var sortDirection: SortDirection?
     @State var nextPagingParam: PagingParam?
 
     @State var repositories: [MinimalRepository] = []
@@ -80,11 +81,13 @@ struct RepositoryListView: View {
             }.onAppear {
                 if self.userId != settings.userId
                     || self.withoutFork != settings.withoutFork
-                    || self.sortProperty != settings.sortProperty {
+                    || self.sortProperty != settings.sortProperty
+                    || self.sortDirection != settings.sortDirection {
                     // 設定が更新されていたらリロードをかける
                     self.userId = settings.userId
                     self.withoutFork = settings.withoutFork
                     self.sortProperty = settings.sortProperty
+                    self.sortDirection = settings.sortDirection
                     fetchAndReloadAll()
                 }
             }
@@ -98,14 +101,16 @@ struct RepositoryListView: View {
         Task {
             guard let userId,
                   let withoutFork,
-                  let sortProperty else { return }
+                  let sortProperty,
+                  let sortDirection else { return }
 
             changeLoadStateSafetyAnimated(loadState: .loading)
             self.nextPagingParam = nil
 
             do {
                 async let repositoryListResponse = APIClient.sendAsync(GetRepositoryListRequest(userId: userId,
-                                                                                      sortProperty: sortProperty))
+                                                                                                sortProperty: sortProperty,
+                                                                                                sortDirection: sortDirection))
                 async let userResponse = APIClient.sendAsync(GetUserRequest(userId: userId))
 
                 let responses = try await (repos: repositoryListResponse, user: userResponse)
@@ -135,6 +140,7 @@ struct RepositoryListView: View {
             guard let userId,
                   let withoutFork,
                   let sortProperty,
+                  let sortDirection,
                   let nextPagingParam else { return }
 
             changeLoadStateSafetyAnimated(loadState: .paging)
@@ -142,6 +148,7 @@ struct RepositoryListView: View {
             do {
                 let repositoryListResponse = try await APIClient.sendAsync(GetRepositoryListRequest(userId: userId,
                                                                                                     sortProperty: sortProperty,
+                                                                                                    sortDirection: sortDirection,
                                                                                                     pagingParam: nextPagingParam))
 
                 changeLoadStateSafetyAnimated(loadState: .normal)

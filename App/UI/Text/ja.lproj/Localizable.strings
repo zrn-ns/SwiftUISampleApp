@@ -11,6 +11,10 @@
 "reload" = "再読み込み";
 "reset" = "リセット";
 "settings" = "設定";
+"sort direction" = "昇順/降順";
+"sort direction ascend" = "昇順";
+"sort direction default" = "デフォルト";
+"sort direction descend" = "降順";
 "sort property" = "並び替え";
 "sort property created at" = "作成日時";
 "sort property full name" = "リポジトリ名";

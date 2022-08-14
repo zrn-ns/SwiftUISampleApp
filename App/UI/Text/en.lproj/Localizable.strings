@@ -11,6 +11,10 @@
 "reload" = "Reload";
 "reset" = "Reset";
 "settings" = "Settings";
+"sort direction" = "Sort direction";
+"sort direction ascend" = "Ascend";
+"sort direction default" = "Default";
+"sort direction descend" = "Descend";
 "sort property" = "Sorted by";
 "sort property created at" = "Created Date";
 "sort property full name" = "Repository name";

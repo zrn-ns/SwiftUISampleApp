@@ -29,12 +29,18 @@ final class UserSettings: ObservableObject {
             userDefaults.setValue(sortProperty.rawValue, forKey: "sortProperty")
         }
     }
-    #warning("昇順/降順を変えられるようにする")
+    /// 昇順/降順
+    @Published var sortDirection: SortDirection {
+        didSet {
+            userDefaults.setValue(sortProperty.rawValue, forKey: "sortDirection")
+        }
+    }
 
     func reset() {
         self.userId = ""
         self.withoutFork = false
         self.sortProperty = .fullName
+        self.sortDirection = .none
     }
 
     // MARK: - private
@@ -49,6 +55,12 @@ final class UserSettings: ObservableObject {
             self.sortProperty = sortProperty
         } else {
             self.sortProperty = .fullName
+        }
+        if let sortDirectionStr = userDefaults.value(forKey: "sortDirection") as? String,
+           let sortDirection: SortDirection = .init(userDefaultValue: sortDirectionStr) {
+            self.sortDirection = sortDirection
+        } else {
+            self.sortDirection = .none
         }
     }
 

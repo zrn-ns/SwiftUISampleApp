@@ -10,6 +10,8 @@
 		74305B9728A628D500B89DB2 /* SortProperty+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74305B9628A628D500B89DB2 /* SortProperty+Extension.swift */; };
 		74305BB528A6644B00B89DB2 /* PagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74305BB428A6644B00B89DB2 /* PagingView.swift */; };
 		74305BB728A8FE9900B89DB2 /* PagingParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74305BB628A8FE9900B89DB2 /* PagingParam.swift */; };
+		74305BB928A9268000B89DB2 /* SortDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74305BB828A9268000B89DB2 /* SortDirection.swift */; };
+		74305BBB28A928F400B89DB2 /* SortDirection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74305BBA28A928F400B89DB2 /* SortDirection+Extension.swift */; };
 		7435959628A0BB0F00BABC18 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7435959528A0BB0F00BABC18 /* WebView.swift */; };
 		7435959928A4974A00BABC18 /* Binding+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7435959828A4974A00BABC18 /* Binding+Extensions.swift */; };
 		7435959B28A4A95500BABC18 /* GetUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7435959A28A4A95500BABC18 /* GetUserRequest.swift */; };
@@ -74,6 +76,8 @@
 		74305B9628A628D500B89DB2 /* SortProperty+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SortProperty+Extension.swift"; sourceTree = "<group>"; };
 		74305BB428A6644B00B89DB2 /* PagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingView.swift; sourceTree = "<group>"; };
 		74305BB628A8FE9900B89DB2 /* PagingParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingParam.swift; sourceTree = "<group>"; };
+		74305BB828A9268000B89DB2 /* SortDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortDirection.swift; sourceTree = "<group>"; };
+		74305BBA28A928F400B89DB2 /* SortDirection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SortDirection+Extension.swift"; sourceTree = "<group>"; };
 		7435959528A0BB0F00BABC18 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		7435959828A4974A00BABC18 /* Binding+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extensions.swift"; sourceTree = "<group>"; };
 		7435959A28A4A95500BABC18 /* GetUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserRequest.swift; sourceTree = "<group>"; };
@@ -298,8 +302,9 @@
 		74B6927028A6271F006DDF0B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				74B6926E28A60DE7006DDF0B /* SortProperty.swift */,
 				74305BB628A8FE9900B89DB2 /* PagingParam.swift */,
+				74305BB828A9268000B89DB2 /* SortDirection.swift */,
+				74B6926E28A60DE7006DDF0B /* SortProperty.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -308,6 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				74A5108B28A081580094E1C8 /* LoadState.swift */,
+				74305BBA28A928F400B89DB2 /* SortDirection+Extension.swift */,
 				74305B9628A628D500B89DB2 /* SortProperty+Extension.swift */,
 				74FC4EA828962B8F005B8B83 /* UserSettings.swift */,
 			);
@@ -475,6 +481,7 @@
 				746508FA28961986009B554D /* SettingsView.swift in Sources */,
 				743595A428A5F74500BABC18 /* UserInfoNavigationItemView.swift in Sources */,
 				74A51049289F967A0094E1C8 /* Rswift+Extensions.swift in Sources */,
+				74305BBB28A928F400B89DB2 /* SortDirection+Extension.swift in Sources */,
 				74305B9728A628D500B89DB2 /* SortProperty+Extension.swift in Sources */,
 				74A5108C28A081580094E1C8 /* LoadState.swift in Sources */,
 				7435959628A0BB0F00BABC18 /* WebView.swift in Sources */,
@@ -492,6 +499,7 @@
 				74A51075289FA0A20094E1C8 /* APIClient.swift in Sources */,
 				7435959B28A4A95500BABC18 /* GetUserRequest.swift in Sources */,
 				74A51083289FECCD0094E1C8 /* APIMethod.swift in Sources */,
+				74305BB928A9268000B89DB2 /* SortDirection.swift in Sources */,
 				74A5107D289FAC200094E1C8 /* VoidResponse.swift in Sources */,
 				74B6927128A6278E006DDF0B /* SortProperty.swift in Sources */,
 				7435959D28A4A98700BABC18 /* UserResponse.swift in Sources */,
