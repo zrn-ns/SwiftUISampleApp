@@ -14,14 +14,29 @@ final class RepositoryListViewModel: ObservableObject {
     @Published private(set) var repositories: [MinimalRepository] = []
     @Published private(set) var user: User?
 
-    #warning("private(set)にする")
-    @Published var userId: String?
-    @Published var withoutFork: Bool?
-    @Published var sortProperty: SortProperty?
-    @Published var sortDirection: SortDirection?
-    @Published var nextPagingParam: PagingParam?
+    @Published private(set) var userId: String?
+    @Published private(set) var withoutFork: Bool?
+    @Published private(set) var sortProperty: SortProperty?
+    @Published private(set) var sortDirection: SortDirection?
+    @Published private(set) var nextPagingParam: PagingParam?
 
     @Published private(set) var settings: UserSettings
+
+    func viewWillAppear() {
+        if userId != settings.userId
+            || withoutFork != settings.withoutFork
+            || sortProperty != settings.sortProperty
+            || sortDirection != settings.sortDirection {
+            // 設定が更新されていたらリロードをかける
+            userId = settings.userId
+            withoutFork = settings.withoutFork
+            sortProperty = settings.sortProperty
+            sortDirection = settings.sortDirection
+            Task {
+                await fetchAndReloadAll()
+            }
+        }
+    }
 
     func fetchAndReloadAll() async {
         guard let userId,

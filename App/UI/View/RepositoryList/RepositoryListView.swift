@@ -71,18 +71,7 @@ struct RepositoryListView: View {
                 }
 
             }.task {
-                #warning("この辺の処理はViewModelに移す")
-                if viewModel.userId != viewModel.settings.userId
-                    || viewModel.withoutFork != viewModel.settings.withoutFork
-                    || viewModel.sortProperty != viewModel.settings.sortProperty
-                    || viewModel.sortDirection != viewModel.settings.sortDirection {
-                    // 設定が更新されていたらリロードをかける
-                    viewModel.userId = viewModel.settings.userId
-                    viewModel.withoutFork = viewModel.settings.withoutFork
-                    viewModel.sortProperty = viewModel.settings.sortProperty
-                    viewModel.sortDirection = viewModel.settings.sortDirection
-                    await viewModel.fetchAndReloadAll()
-                }
+                viewModel.viewWillAppear()
             }
             .navigationBarTitleDisplayMode(.inline)
         }
