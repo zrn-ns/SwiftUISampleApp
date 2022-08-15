@@ -1,5 +1,5 @@
 //
-//  GetRepositoryListRequest.swift
+//  GetGithubRepositoryListRequest.swift
 //  APIClient
 //
 //  Created by zrn_ns on 2022/08/07.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-public struct GetRepositoryListRequest: APIRequest {
-    public typealias Response = [MinimalRepository]
+public struct GetGithubRepositoryListRequest: APIRequest {
+    public typealias Response = [MinimalGithubRepository]
 
     public var url: URL {
         guard let encodedUserId: String = userId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
@@ -49,13 +49,13 @@ public struct GetRepositoryListRequest: APIRequest {
     }
 }
 
-extension GetRepositoryListRequest: ResponseConvertible {
+extension GetGithubRepositoryListRequest: ResponseConvertible {
     public struct Converted {
-        public let repositories: [MinimalRepository]
+        public let repositories: [MinimalGithubRepository]
         public let nextPagingParam: PagingParam
     }
 
-    public func convert(_ response: [MinimalRepository]) -> Converted {
+    public func convert(_ response: [MinimalGithubRepository]) -> Converted {
         .init(repositories: response,
               nextPagingParam: .init(currentPage: nextPage,
                                      hasNextPage: response.count == itemsPerPage))

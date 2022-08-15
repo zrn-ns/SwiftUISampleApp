@@ -1,5 +1,5 @@
 //
-//  RepositoryListViewModel.swift
+//  GithubRepositoryListViewModel.swift
 //  App
 //
 //  Created by zrn_ns on 2022/08/16.
@@ -9,9 +9,9 @@ import APIClient
 import Foundation
 
 @MainActor
-final class RepositoryListViewModel: ObservableObject {
+final class GithubRepositoryListViewModel: ObservableObject {
     @Published private(set) var loadState: LoadState? = nil
-    @Published private(set) var repositories: [MinimalRepository] = []
+    @Published private(set) var repositories: [MinimalGithubRepository] = []
     @Published private(set) var user: User?
 
     func viewWillAppear() {
@@ -38,12 +38,12 @@ final class RepositoryListViewModel: ObservableObject {
 
         do {
             #warning("APIClientはモックに差し替えられるようにしたい")
-            async let repositoryListResponse = APIClient.sendAsync(GetRepositoryListRequest(userId: searchParams.userId,
+            async let githubRepositoryListResponse = APIClient.sendAsync(GetGithubRepositoryListRequest(userId: searchParams.userId,
                                                                                             sortProperty: searchParams.sortProperty,
                                                                                             sortDirection: searchParams.sortDirection))
             async let userResponse = APIClient.sendAsync(GetUserRequest(userId: searchParams.userId))
 
-            let responses = try await (repos: repositoryListResponse, user: userResponse)
+            let responses = try await (repos: githubRepositoryListResponse, user: userResponse)
 
             changeLoadStateSafety(loadState: .normal)
 
@@ -73,20 +73,20 @@ final class RepositoryListViewModel: ObservableObject {
         changeLoadStateSafety(loadState: .paging)
 
         do {
-            let repositoryListResponse = try await APIClient.sendAsync(GetRepositoryListRequest(userId: searchParams.userId,
+            let githubRepositoryListResponse = try await APIClient.sendAsync(GetGithubRepositoryListRequest(userId: searchParams.userId,
                                                                                                 sortProperty: searchParams.sortProperty,
                                                                                                 sortDirection: searchParams.sortDirection,
                                                                                                 pagingParam: nextPagingParam))
 
             changeLoadStateSafety(loadState: .normal)
-            self.repositories = (self.repositories + repositoryListResponse.repositories).filter { repo in
+            self.repositories = (self.repositories + githubRepositoryListResponse.repositories).filter { repo in
                 if searchParams.withoutFork {
                     return !repo.isFork
                 } else {
                     return true
                 }
             }
-            self.nextPagingParam = repositoryListResponse.nextPagingParam
+            self.nextPagingParam = githubRepositoryListResponse.nextPagingParam
 
         } catch let error as APIError {
             changeLoadStateSafety(loadState: .error(error))

@@ -1,5 +1,5 @@
 //
-//  RepositoryListView.swift
+//  GithubRepositoryListView.swift
 //  UserProfileSampleApp
 //
 //  Created by zrn_ns on 2022/07/30.
@@ -8,9 +8,9 @@
 import APIClient
 import SwiftUI
 
-struct RepositoryListView: View {
+struct GithubRepositoryListView: View {
 
-    @ObservedObject var viewModel: RepositoryListViewModel
+    @ObservedObject var viewModel: GithubRepositoryListViewModel
 
     var body: some View {
         NavigationView {
@@ -26,7 +26,7 @@ struct RepositoryListView: View {
                                 NavigationLink {
                                     WebView(url: repo.htmlUrl)
                                 } label: {
-                                    RepositoryListItemView(repository: repo)
+                                    GithubRepositoryListItemView(githubRepository: repo)
                                 }
                             }
                         }
@@ -78,8 +78,8 @@ struct RepositoryListView: View {
     }
 }
 
-struct RepositoryLostView_Previews: PreviewProvider {
+struct GithubRepositoryLostView_Previews: PreviewProvider {
     static var previews: some View {
-        RepositoryListView(viewModel: .init(settings: .sharedForPreview))
+        GithubRepositoryListView(viewModel: .init(settings: .sharedForPreview))
     }
 }

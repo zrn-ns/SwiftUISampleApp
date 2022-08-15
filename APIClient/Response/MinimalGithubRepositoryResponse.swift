@@ -1,5 +1,5 @@
 //
-//  MinimalRepositoryResponse.swift
+//  MinimalGithubRepositoryResponse.swift
 //  APIClient
 //
 //  Created by zrn_ns on 2022/08/07.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct MinimalRepository: APIResponse {
+public struct MinimalGithubRepository: APIResponse {
     public let id: Int
     public let name: String
     public let description: String?
@@ -37,4 +37,4 @@ public struct MinimalRepository: APIResponse {
     }
 }
 
-extension MinimalRepository: Identifiable {}
+extension MinimalGithubRepository: Identifiable {}
