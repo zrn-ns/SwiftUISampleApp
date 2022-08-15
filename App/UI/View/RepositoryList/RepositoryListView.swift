@@ -30,8 +30,7 @@ struct RepositoryListView: View {
                                 }
                             }
                         }
-                        if let nextPagingParam = viewModel.nextPagingParam,
-                           nextPagingParam.hasNextPage {
+                        if viewModel.shouldShowPagingView() {
                             Section {
                                 PagingView()
                                     .task {

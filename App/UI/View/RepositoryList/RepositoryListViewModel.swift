@@ -14,8 +14,6 @@ final class RepositoryListViewModel: ObservableObject {
     @Published private(set) var repositories: [MinimalRepository] = []
     @Published private(set) var user: User?
 
-    @Published private(set) var nextPagingParam: PagingParam?
-
     func viewWillAppear() {
         if userId != settings.userId
             || withoutFork != settings.withoutFork
@@ -30,6 +28,15 @@ final class RepositoryListViewModel: ObservableObject {
                 await fetchAndReloadAll()
             }
         }
+    }
+
+    func shouldShowPagingView() -> Bool {
+        if let nextPagingParam,
+           nextPagingParam.hasNextPage {
+            return true
+        }
+
+        return false
     }
 
     func fetchAndReloadAll() async {
@@ -112,6 +119,7 @@ final class RepositoryListViewModel: ObservableObject {
     // MARK: - private
 
     private var settings: UserSettings
+    private var nextPagingParam: PagingParam?
 
     // 検索条件のキャッシュ系情報
     #warning("後で一つのstructにまとめてしまいたい")
