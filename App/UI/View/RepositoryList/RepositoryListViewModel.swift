@@ -20,8 +20,6 @@ final class RepositoryListViewModel: ObservableObject {
     @Published private(set) var sortDirection: SortDirection?
     @Published private(set) var nextPagingParam: PagingParam?
 
-    @Published private(set) var settings: UserSettings
-
     func viewWillAppear() {
         if userId != settings.userId
             || withoutFork != settings.withoutFork
@@ -116,6 +114,8 @@ final class RepositoryListViewModel: ObservableObject {
     }
 
     // MARK: - private
+
+    private var settings: UserSettings
 
     private func changeLoadStateSafety(loadState: LoadState) {
         guard self.loadState != loadState else { return }
