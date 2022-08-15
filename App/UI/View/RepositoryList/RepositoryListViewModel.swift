@@ -15,19 +15,10 @@ final class RepositoryListViewModel: ObservableObject {
     @Published private(set) var user: User?
 
     func viewWillAppear() {
-        if userId != settings.userId
-            || withoutFork != settings.withoutFork
-            || sortProperty != settings.sortProperty
-            || sortDirection != settings.sortDirection {
-            // 設定が更新されていたらリロードをかける
-            userId = settings.userId
-            withoutFork = settings.withoutFork
-            sortProperty = settings.sortProperty
-            sortDirection = settings.sortDirection
-            Task {
-                await fetchAndReloadAll()
-            }
-        }
+        searchParams = .init(userId: settings.userId,
+                             withoutFork: settings.withoutFork,
+                             sortProperty: settings.sortProperty,
+                             sortDirection: settings.sortDirection)
     }
 
     func shouldShowPagingView() -> Bool {
@@ -40,27 +31,24 @@ final class RepositoryListViewModel: ObservableObject {
     }
 
     func fetchAndReloadAll() async {
-        guard let userId,
-              let withoutFork,
-              let sortProperty,
-              let sortDirection else { return }
+        guard let searchParams else { return }
 
         changeLoadStateSafety(loadState: .loading)
         self.nextPagingParam = nil
 
         do {
             #warning("APIClientはモックに差し替えられるようにしたい")
-            async let repositoryListResponse = APIClient.sendAsync(GetRepositoryListRequest(userId: userId,
-                                                                                            sortProperty: sortProperty,
-                                                                                            sortDirection: sortDirection))
-            async let userResponse = APIClient.sendAsync(GetUserRequest(userId: userId))
+            async let repositoryListResponse = APIClient.sendAsync(GetRepositoryListRequest(userId: searchParams.userId,
+                                                                                            sortProperty: searchParams.sortProperty,
+                                                                                            sortDirection: searchParams.sortDirection))
+            async let userResponse = APIClient.sendAsync(GetUserRequest(userId: searchParams.userId))
 
             let responses = try await (repos: repositoryListResponse, user: userResponse)
 
             changeLoadStateSafety(loadState: .normal)
 
             self.repositories = responses.repos.repositories.filter { repo in
-                if withoutFork {
+                if searchParams.withoutFork {
                     return !repo.isFork
                 } else {
                     return true
@@ -79,23 +67,20 @@ final class RepositoryListViewModel: ObservableObject {
     }
 
     func loadNextPage() async {
-        guard let userId,
-              let withoutFork,
-              let sortProperty,
-              let sortDirection,
+        guard let searchParams,
               let nextPagingParam else { return }
 
         changeLoadStateSafety(loadState: .paging)
 
         do {
-            let repositoryListResponse = try await APIClient.sendAsync(GetRepositoryListRequest(userId: userId,
-                                                                                                sortProperty: sortProperty,
-                                                                                                sortDirection: sortDirection,
+            let repositoryListResponse = try await APIClient.sendAsync(GetRepositoryListRequest(userId: searchParams.userId,
+                                                                                                sortProperty: searchParams.sortProperty,
+                                                                                                sortDirection: searchParams.sortDirection,
                                                                                                 pagingParam: nextPagingParam))
 
             changeLoadStateSafety(loadState: .normal)
             self.repositories = (self.repositories + repositoryListResponse.repositories).filter { repo in
-                if withoutFork {
+                if searchParams.withoutFork {
                     return !repo.isFork
                 } else {
                     return true
@@ -122,15 +107,29 @@ final class RepositoryListViewModel: ObservableObject {
     private var settings: UserSettings
     private var nextPagingParam: PagingParam?
 
-    // 検索条件のキャッシュ系情報
-    #warning("後で一つのstructにまとめてしまいたい")
-    private var userId: String?
-    private var withoutFork: Bool?
-    private var sortProperty: SortProperty?
-    private var sortDirection: SortDirection?
+    /// 検索条件
+    private var searchParams: SearchParams? {
+        didSet {
+            if searchParams != oldValue {
+                // 検索条件が更新されていたらリロードをかける
+                Task {
+                    await fetchAndReloadAll()
+                }
+            }
+        }
+    }
 
     private func changeLoadStateSafety(loadState: LoadState) {
         guard self.loadState != loadState else { return }
         self.loadState = loadState
     }
+}
+
+// MARK: - SearchParams
+
+private struct SearchParams: Equatable {
+    var userId: String
+    var withoutFork: Bool
+    var sortProperty: SortProperty
+    var sortDirection: SortDirection
 }
