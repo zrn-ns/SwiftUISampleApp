@@ -49,6 +49,7 @@ final class RepositoryListViewModel: ObservableObject {
         self.nextPagingParam = nil
 
         do {
+            #warning("APIClientはモックに差し替えられるようにしたい")
             async let repositoryListResponse = APIClient.sendAsync(GetRepositoryListRequest(userId: userId,
                                                                                             sortProperty: sortProperty,
                                                                                             sortDirection: sortDirection))
