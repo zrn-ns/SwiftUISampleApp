@@ -14,10 +14,6 @@ final class RepositoryListViewModel: ObservableObject {
     @Published private(set) var repositories: [MinimalRepository] = []
     @Published private(set) var user: User?
 
-    @Published private(set) var userId: String?
-    @Published private(set) var withoutFork: Bool?
-    @Published private(set) var sortProperty: SortProperty?
-    @Published private(set) var sortDirection: SortDirection?
     @Published private(set) var nextPagingParam: PagingParam?
 
     func viewWillAppear() {
@@ -116,6 +112,13 @@ final class RepositoryListViewModel: ObservableObject {
     // MARK: - private
 
     private var settings: UserSettings
+
+    // 検索条件のキャッシュ系情報
+    #warning("後で一つのstructにまとめてしまいたい")
+    private var userId: String?
+    private var withoutFork: Bool?
+    private var sortProperty: SortProperty?
+    private var sortDirection: SortDirection?
 
     private func changeLoadStateSafety(loadState: LoadState) {
         guard self.loadState != loadState else { return }
