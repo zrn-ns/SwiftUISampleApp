@@ -9,30 +9,20 @@ import APIClient
 import SwiftUI
 
 struct RepositoryListView: View {
-    @ObservedObject var settings: UserSettings
-    @State var loadState: LoadState? = nil
 
-    #warning("更新条件が増えてきて管理しづらくなってきたので、まとめる")
-    @State var userId: String?
-    @State var withoutFork: Bool?
-    @State var sortProperty: SortProperty?
-    @State var sortDirection: SortDirection?
-    @State var nextPagingParam: PagingParam?
-
-    @State var repositories: [MinimalRepository] = []
-    @State var user: User?
+    @ObservedObject var viewModel: RepositoryListViewModel
 
     var body: some View {
         NavigationView {
             VStack {
-                switch loadState {
+                switch viewModel.loadState {
                 case .none:
                     EmptyView()
 
                 case .normal, .paging:
                     List {
                         Section {
-                            ForEach(repositories) { repo in
+                            ForEach(viewModel.repositories) { repo in
                                 NavigationLink {
                                     WebView(url: repo.htmlUrl)
                                 } label: {
@@ -40,21 +30,21 @@ struct RepositoryListView: View {
                                 }
                             }
                         }
-                        if let nextPagingParam,
+                        if let nextPagingParam = viewModel.nextPagingParam,
                            nextPagingParam.hasNextPage {
                             Section {
                                 PagingView()
-                                    .onAppear {
-                                        loadNextPage()
+                                    .task {
+                                        await viewModel.loadNextPage()
                                     }
                             }
                         }
                     }
                     .listStyle(.plain)
                     .refreshable {
-                        guard let loadState,
+                        guard let loadState = viewModel.loadState,
                               loadState.isNotFetching() else { return }
-                        fetchAndReloadAll()
+                        await viewModel.fetchAndReloadAll()
                     }
 
                 case .loading:
@@ -63,122 +53,44 @@ struct RepositoryListView: View {
                 case .error(let apiError):
                     #warning("表示用のメッセージを出すように修正")
                     ReloadableErrorView(errorMessage: apiError.localizedDescription) {
-                        fetchAndReloadAll()
+                        Task {
+                            await viewModel.fetchAndReloadAll()
+                        }
                     }
                 }
 
             }.toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: SettingsView(settings: settings), label: {
+                    NavigationLink(destination: SettingsView(settings: UserSettings.shared), label: {
                         Image(systemName: "gearshape")
                     })
                 }
                 ToolbarItem(placement: .principal) {
-                    UserInfoNavigationItemView(userIconURL: user?.avatarUrl,
-                                               userName: user?.login)
+                    UserInfoNavigationItemView(userIconURL: viewModel.user?.avatarUrl,
+                                               userName: viewModel.user?.login)
                 }
 
-            }.onAppear {
-                if self.userId != settings.userId
-                    || self.withoutFork != settings.withoutFork
-                    || self.sortProperty != settings.sortProperty
-                    || self.sortDirection != settings.sortDirection {
+            }.task {
+                #warning("この辺の処理はViewModelに移す")
+                if viewModel.userId != viewModel.settings.userId
+                    || viewModel.withoutFork != viewModel.settings.withoutFork
+                    || viewModel.sortProperty != viewModel.settings.sortProperty
+                    || viewModel.sortDirection != viewModel.settings.sortDirection {
                     // 設定が更新されていたらリロードをかける
-                    self.userId = settings.userId
-                    self.withoutFork = settings.withoutFork
-                    self.sortProperty = settings.sortProperty
-                    self.sortDirection = settings.sortDirection
-                    fetchAndReloadAll()
+                    viewModel.userId = viewModel.settings.userId
+                    viewModel.withoutFork = viewModel.settings.withoutFork
+                    viewModel.sortProperty = viewModel.settings.sortProperty
+                    viewModel.sortDirection = viewModel.settings.sortDirection
+                    await viewModel.fetchAndReloadAll()
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-        }
-    }
-
-    // MARK: - private
-
-    private func fetchAndReloadAll() {
-        Task {
-            guard let userId,
-                  let withoutFork,
-                  let sortProperty,
-                  let sortDirection else { return }
-
-            changeLoadStateSafetyAnimated(loadState: .loading)
-            self.nextPagingParam = nil
-
-            do {
-                async let repositoryListResponse = APIClient.sendAsync(GetRepositoryListRequest(userId: userId,
-                                                                                                sortProperty: sortProperty,
-                                                                                                sortDirection: sortDirection))
-                async let userResponse = APIClient.sendAsync(GetUserRequest(userId: userId))
-
-                let responses = try await (repos: repositoryListResponse, user: userResponse)
-
-                changeLoadStateSafetyAnimated(loadState: .normal)
-
-                self.repositories = responses.repos.repositories.filter { repo in
-                    if withoutFork {
-                        return !repo.isFork
-                    } else {
-                        return true
-                    }
-                }
-                self.user = responses.user
-                self.nextPagingParam = responses.repos.nextPagingParam
-
-            } catch let error as APIError {
-                changeLoadStateSafetyAnimated(loadState: .error(error))
-                self.repositories = []
-                self.user = nil
-            }
-        }
-    }
-
-    private func loadNextPage() {
-        Task {
-            guard let userId,
-                  let withoutFork,
-                  let sortProperty,
-                  let sortDirection,
-                  let nextPagingParam else { return }
-
-            changeLoadStateSafetyAnimated(loadState: .paging)
-
-            do {
-                let repositoryListResponse = try await APIClient.sendAsync(GetRepositoryListRequest(userId: userId,
-                                                                                                    sortProperty: sortProperty,
-                                                                                                    sortDirection: sortDirection,
-                                                                                                    pagingParam: nextPagingParam))
-
-                changeLoadStateSafetyAnimated(loadState: .normal)
-                self.repositories = (self.repositories + repositoryListResponse.repositories).filter { repo in
-                    if withoutFork {
-                        return !repo.isFork
-                    } else {
-                        return true
-                    }
-                }
-                self.nextPagingParam = repositoryListResponse.nextPagingParam
-
-            } catch let error as APIError {
-                changeLoadStateSafetyAnimated(loadState: .error(error))
-                self.repositories = []
-            }
-        }
-    }
-
-    private func changeLoadStateSafetyAnimated(loadState: LoadState) {
-        guard self.loadState != loadState else { return }
-
-        withAnimation {
-            self.loadState = loadState
         }
     }
 }
 
 struct RepositoryLostView_Previews: PreviewProvider {
     static var previews: some View {
-        RepositoryListView(settings: UserSettings.sharedForPreview)
+        RepositoryListView(viewModel: .init(settings: .sharedForPreview))
     }
 }

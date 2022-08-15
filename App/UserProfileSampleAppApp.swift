@@ -11,7 +11,7 @@ import SwiftUI
 struct UserProfileSampleAppApp: App {
     var body: some Scene {
         WindowGroup {
-            RepositoryListView(settings: UserSettings.shared)
+            RepositoryListView(viewModel: .init(settings: .shared))
         }
     }
 }

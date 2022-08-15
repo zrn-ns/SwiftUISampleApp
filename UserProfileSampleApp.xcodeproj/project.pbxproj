@@ -12,6 +12,7 @@
 		74305BB728A8FE9900B89DB2 /* PagingParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74305BB628A8FE9900B89DB2 /* PagingParam.swift */; };
 		74305BB928A9268000B89DB2 /* SortDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74305BB828A9268000B89DB2 /* SortDirection.swift */; };
 		74305BBB28A928F400B89DB2 /* SortDirection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74305BBA28A928F400B89DB2 /* SortDirection+Extension.swift */; };
+		74305BBD28AAF4B100B89DB2 /* RepositoryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74305BBC28AAF4B100B89DB2 /* RepositoryListViewModel.swift */; };
 		7435959628A0BB0F00BABC18 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7435959528A0BB0F00BABC18 /* WebView.swift */; };
 		7435959928A4974A00BABC18 /* Binding+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7435959828A4974A00BABC18 /* Binding+Extensions.swift */; };
 		7435959B28A4A95500BABC18 /* GetUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7435959A28A4A95500BABC18 /* GetUserRequest.swift */; };
@@ -78,6 +79,7 @@
 		74305BB628A8FE9900B89DB2 /* PagingParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingParam.swift; sourceTree = "<group>"; };
 		74305BB828A9268000B89DB2 /* SortDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortDirection.swift; sourceTree = "<group>"; };
 		74305BBA28A928F400B89DB2 /* SortDirection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SortDirection+Extension.swift"; sourceTree = "<group>"; };
+		74305BBC28AAF4B100B89DB2 /* RepositoryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListViewModel.swift; sourceTree = "<group>"; };
 		7435959528A0BB0F00BABC18 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		7435959828A4974A00BABC18 /* Binding+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extensions.swift"; sourceTree = "<group>"; };
 		7435959A28A4A95500BABC18 /* GetUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserRequest.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				746508E528951782009B554D /* RepositoryListView.swift */,
+				74305BBC28AAF4B100B89DB2 /* RepositoryListViewModel.swift */,
 				74A5109128A09D300094E1C8 /* RepositoryListItemView.swift */,
 			);
 			path = RepositoryList;
@@ -488,6 +491,7 @@
 				7435959928A4974A00BABC18 /* Binding+Extensions.swift in Sources */,
 				746508E428951782009B554D /* UserProfileSampleAppApp.swift in Sources */,
 				74A5103F289F701B0094E1C8 /* R.generated.swift in Sources */,
+				74305BBD28AAF4B100B89DB2 /* RepositoryListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
