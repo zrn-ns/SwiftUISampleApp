@@ -1,0 +1,13 @@
+--self remove
+--rules \
+    indent, \
+    redundantBreak, \
+    redundantRawValues, \
+    redundantGet, \
+    redundantSelf
+--indent 4
+
+# file options
+--exclude \
+    **/*.generated.swift, \
+
