@@ -6,7 +6,7 @@
 //
 
 import APIClient
-import SwiftUI
+import Foundation
 
 @MainActor
 final class RepositoryListViewModel: ObservableObject {
@@ -44,7 +44,7 @@ final class RepositoryListViewModel: ObservableObject {
               let sortProperty,
               let sortDirection else { return }
 
-        changeLoadStateSafetyAnimated(loadState: .loading)
+        changeLoadStateSafety(loadState: .loading)
         self.nextPagingParam = nil
 
         do {
@@ -55,7 +55,7 @@ final class RepositoryListViewModel: ObservableObject {
 
             let responses = try await (repos: repositoryListResponse, user: userResponse)
 
-            changeLoadStateSafetyAnimated(loadState: .normal)
+            changeLoadStateSafety(loadState: .normal)
 
             self.repositories = responses.repos.repositories.filter { repo in
                 if withoutFork {
@@ -68,7 +68,7 @@ final class RepositoryListViewModel: ObservableObject {
             self.nextPagingParam = responses.repos.nextPagingParam
 
         } catch let error as APIError {
-            changeLoadStateSafetyAnimated(loadState: .error(error))
+            changeLoadStateSafety(loadState: .error(error))
             self.repositories = []
             self.user = nil
         } catch {
@@ -83,7 +83,7 @@ final class RepositoryListViewModel: ObservableObject {
               let sortDirection,
               let nextPagingParam else { return }
 
-        changeLoadStateSafetyAnimated(loadState: .paging)
+        changeLoadStateSafety(loadState: .paging)
 
         do {
             let repositoryListResponse = try await APIClient.sendAsync(GetRepositoryListRequest(userId: userId,
@@ -91,7 +91,7 @@ final class RepositoryListViewModel: ObservableObject {
                                                                                                 sortDirection: sortDirection,
                                                                                                 pagingParam: nextPagingParam))
 
-            changeLoadStateSafetyAnimated(loadState: .normal)
+            changeLoadStateSafety(loadState: .normal)
             self.repositories = (self.repositories + repositoryListResponse.repositories).filter { repo in
                 if withoutFork {
                     return !repo.isFork
@@ -102,7 +102,7 @@ final class RepositoryListViewModel: ObservableObject {
             self.nextPagingParam = repositoryListResponse.nextPagingParam
 
         } catch let error as APIError {
-            changeLoadStateSafetyAnimated(loadState: .error(error))
+            changeLoadStateSafety(loadState: .error(error))
             self.repositories = []
         } catch {
             preconditionFailure("本来侵入しない処理")
@@ -117,12 +117,8 @@ final class RepositoryListViewModel: ObservableObject {
 
     // MARK: - private
 
-    private func changeLoadStateSafetyAnimated(loadState: LoadState) {
+    private func changeLoadStateSafety(loadState: LoadState) {
         guard self.loadState != loadState else { return }
-
-        #warning("SwiftUIのメソッドなのでView側に移動 & import SwiftUIを消す")
-        withAnimation {
-            self.loadState = loadState
-        }
+        self.loadState = loadState
     }
 }

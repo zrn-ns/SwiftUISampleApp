@@ -74,6 +74,7 @@ struct RepositoryListView: View {
                 viewModel.viewWillAppear()
             }
             .navigationBarTitleDisplayMode(.inline)
+            .animation(.default, value: viewModel.loadState)
         }
     }
 }
