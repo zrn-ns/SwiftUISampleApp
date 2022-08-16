@@ -46,13 +46,13 @@ struct GithubRepositoryListItemView: View {
 struct GithubRepositoryListItemView_Previews: PreviewProvider {
     static var previews: some View {
         GithubRepositoryListItemView(githubRepository: MinimalGithubRepository(id: 1,
-                                                             name: "repo_name",
-                                                             description: "🎉Repo Description hogehogehogehogehoge",
-                                                             language: "Swift",
-                                                             stargazersCount: 3,
-                                                             htmlUrl: URL(string: "https://google.com/")!,
-                                                             isFork: false))
-        .previewLayout(.sizeThatFits)
-        .frame(width: 320)
+                                                                               name: "repo_name",
+                                                                               description: "🎉Repo Description hogehogehogehogehoge",
+                                                                               language: "Swift",
+                                                                               stargazersCount: 3,
+                                                                               htmlUrl: URL(string: "https://google.com/")!,
+                                                                               isFork: false))
+            .previewLayout(.sizeThatFits)
+            .frame(width: 320)
     }
 }

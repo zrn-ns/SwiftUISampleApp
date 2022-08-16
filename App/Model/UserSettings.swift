@@ -37,10 +37,10 @@ final class UserSettings: ObservableObject {
     }
 
     func reset() {
-        self.userId = ""
-        self.withoutFork = false
-        self.sortProperty = .fullName
-        self.sortDirection = .none
+        userId = ""
+        withoutFork = false
+        sortProperty = .fullName
+        sortDirection = .none
     }
 
     // MARK: - private
@@ -48,19 +48,19 @@ final class UserSettings: ObservableObject {
     fileprivate init(suiteName: String? = nil) {
         self.suiteName = suiteName ?? Bundle.main.bundleIdentifier!
         userDefaults = .init(suiteName: suiteName)!
-        self.userId = userDefaults.value(forKey: "userId") as? String ?? ""
-        self.withoutFork = userDefaults.value(forKey: "withoutFork") as? Bool ?? false
+        userId = userDefaults.value(forKey: "userId") as? String ?? ""
+        withoutFork = userDefaults.value(forKey: "withoutFork") as? Bool ?? false
         if let sortPropertyStr = userDefaults.value(forKey: "sortProperty") as? String,
            let sortProperty: SortProperty = .init(rawValue: sortPropertyStr) {
             self.sortProperty = sortProperty
         } else {
-            self.sortProperty = .fullName
+            sortProperty = .fullName
         }
         if let sortDirectionStr = userDefaults.value(forKey: "sortDirection") as? String,
            let sortDirection: SortDirection = .init(userDefaultValue: sortDirectionStr) {
             self.sortDirection = sortDirection
         } else {
-            self.sortDirection = .none
+            sortDirection = .none
         }
     }
 
@@ -69,9 +69,9 @@ final class UserSettings: ObservableObject {
 }
 
 #if DEBUG
-extension UserSettings {
-    static let sharedForPreview: UserSettings = {
-        return .init(suiteName: "suiteForPreview")
-    }()
-}
+    extension UserSettings {
+        static let sharedForPreview: UserSettings = {
+            return .init(suiteName: "suiteForPreview")
+        }()
+    }
 #endif

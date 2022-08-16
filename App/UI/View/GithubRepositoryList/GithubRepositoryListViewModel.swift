@@ -34,28 +34,28 @@ final class GithubRepositoryListViewModel: ObservableObject {
         guard let searchParams else { return }
 
         changeLoadStateSafety(loadState: .loading)
-        self.nextPagingParam = nil
+        nextPagingParam = nil
 
         do {
             #warning("APIClientはモックに差し替えられるようにしたい")
             async let githubRepositoryListResponse = APIClient.sendAsync(GetGithubRepositoryListRequest(userId: searchParams.userId,
-                                                                                            sortProperty: searchParams.sortProperty,
-                                                                                            sortDirection: searchParams.sortDirection))
+                                                                                                        sortProperty: searchParams.sortProperty,
+                                                                                                        sortDirection: searchParams.sortDirection))
             async let userResponse = APIClient.sendAsync(GetUserRequest(userId: searchParams.userId))
 
             let responses = try await (repos: githubRepositoryListResponse, user: userResponse)
 
             changeLoadStateSafety(loadState: .normal)
 
-            self.repositories = responses.repos.repositories.filter { repo in
+            repositories = responses.repos.repositories.filter { repo in
                 if searchParams.withoutFork {
                     return !repo.isFork
                 } else {
                     return true
                 }
             }
-            self.user = responses.user
-            self.nextPagingParam = responses.repos.nextPagingParam
+            user = responses.user
+            nextPagingParam = responses.repos.nextPagingParam
 
         } catch let error as APIError {
             changeLoadStateSafety(loadState: .error(error))
@@ -74,12 +74,12 @@ final class GithubRepositoryListViewModel: ObservableObject {
 
         do {
             let githubRepositoryListResponse = try await APIClient.sendAsync(GetGithubRepositoryListRequest(userId: searchParams.userId,
-                                                                                                sortProperty: searchParams.sortProperty,
-                                                                                                sortDirection: searchParams.sortDirection,
-                                                                                                pagingParam: nextPagingParam))
+                                                                                                            sortProperty: searchParams.sortProperty,
+                                                                                                            sortDirection: searchParams.sortDirection,
+                                                                                                            pagingParam: nextPagingParam))
 
             changeLoadStateSafety(loadState: .normal)
-            self.repositories = (self.repositories + githubRepositoryListResponse.repositories).filter { repo in
+            repositories = (repositories + githubRepositoryListResponse.repositories).filter { repo in
                 if searchParams.withoutFork {
                     return !repo.isFork
                 } else {
