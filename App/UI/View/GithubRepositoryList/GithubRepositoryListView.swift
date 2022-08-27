@@ -8,9 +8,9 @@
 import APIClient
 import SwiftUI
 
-struct GithubRepositoryListView: View {
+struct GithubRepositoryListView<ViewModel: GithubRepositoryListViewModel>: View {
 
-    @ObservedObject var viewModel: GithubRepositoryListViewModel
+    @ObservedObject var viewModel: ViewModel
 
     var body: some View {
         NavigationView {
@@ -80,6 +80,6 @@ struct GithubRepositoryListView: View {
 
 struct GithubRepositoryLostView_Previews: PreviewProvider {
     static var previews: some View {
-        GithubRepositoryListView(viewModel: .init(settings: .sharedForPreview))
+        GithubRepositoryListView(viewModel: GithubRepositoryListViewModelImpl(settings: .sharedForPreview))
     }
 }

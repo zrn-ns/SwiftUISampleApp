@@ -8,8 +8,24 @@
 import APIClient
 import Foundation
 
+// MARK: - protocol
+
 @MainActor
-final class GithubRepositoryListViewModel: ObservableObject {
+protocol GithubRepositoryListViewModel: ObservableObject {
+    var loadState: LoadState? { get }
+    var repositories: [MinimalGithubRepository] { get }
+    var user: User? { get }
+
+    func viewWillAppear()
+    func shouldShowPagingView() -> Bool
+    func fetchAndReloadAll() async
+    func loadNextPage() async
+}
+
+// MARK: - Impl
+
+@MainActor
+final class GithubRepositoryListViewModelImpl: GithubRepositoryListViewModel {
     @Published private(set) var loadState: LoadState? = nil
     @Published private(set) var repositories: [MinimalGithubRepository] = []
     @Published private(set) var user: User?

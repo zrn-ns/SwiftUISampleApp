@@ -11,7 +11,7 @@ import SwiftUI
 struct UserProfileSampleAppApp: App {
     var body: some Scene {
         WindowGroup {
-            GithubRepositoryListView(viewModel: .init(settings: .shared))
+            GithubRepositoryListView(viewModel: GithubRepositoryListViewModelImpl(settings: .shared))
         }
     }
 }
