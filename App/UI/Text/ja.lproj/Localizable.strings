@@ -1,13 +1,5 @@
-/* 
-  Localizable.strings
-  UserProfileSampleApp
-
-  Created by zrn_ns on 2022/08/07.
-  
-*/
-
-"api error connection failure" = "サーバへの接続に失敗しました。再度お試しください。";
 "api error cancelled" = "操作がキャンセルされました。";
+"api error connection failure" = "サーバへの接続に失敗しました。再度お試しください。";
 "api error logic error" = "原因不明のエラーが発生しました。繰り返し発生する場合、サポートまでお問い合わせください。";
 "api error user input error" = "入力に間違いがあります。ご確認の上再度お試しください。";
 "github id" = "Github ID";
@@ -15,13 +7,13 @@
 "reload" = "再読み込み";
 "reset" = "リセット";
 "settings" = "設定";
-"sort direction" = "昇順/降順";
 "sort direction ascend" = "昇順";
 "sort direction default" = "デフォルト";
 "sort direction descend" = "降順";
-"sort property" = "並び替え";
+"sort direction" = "昇順/降順";
 "sort property created at" = "作成日時";
 "sort property full name" = "リポジトリ名";
 "sort property pushed at" = "最終Push日時";
 "sort property updated at" = "最終更新日時";
+"sort property" = "並び替え";
 "without fork" = "Forkを除外する";

@@ -8,3 +8,5 @@ cd `dirname "$0"`
 cd ..
 
 mint run swiftformat . --swiftversion 5.7
+./scripts/sort_localizable_strings.sh
+

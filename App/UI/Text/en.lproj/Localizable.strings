@@ -1,13 +1,5 @@
-/* 
-  Localizable.strings
-  UserProfileSampleApp
-
-  Created by zrn_ns on 2022/08/07.
-  
-*/
-
-"api error connection failure" = "Connection failure. Please try again later.";
 "api error cancelled" = "The request was cancelled.";
+"api error connection failure" = "Connection failure. Please try again later.";
 "api error logic error" = "Unexpected error has occured. If the error persists, please contact us.";
 "api error user input error" = "Invalid user input. Please check.";
 "github id" = "Github ID";
@@ -15,13 +7,13 @@
 "reload" = "Reload";
 "reset" = "Reset";
 "settings" = "Settings";
-"sort direction" = "Sort direction";
 "sort direction ascend" = "Ascend";
 "sort direction default" = "Default";
 "sort direction descend" = "Descend";
-"sort property" = "Sorted by";
+"sort direction" = "Sort direction";
 "sort property created at" = "Created Date";
 "sort property full name" = "Repository name";
 "sort property pushed at" = "Pushed Date";
 "sort property updated at" = "Updated Date";
+"sort property" = "Sorted by";
 "without fork" = "Without fork repositories";
