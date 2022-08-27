@@ -17,8 +17,6 @@ public enum APIError: Error, Equatable {
     case userInputError(systemErrorInfo: String)
     /// キャンセルされた
     case cancelled
-    /// その他
-    case other
 
     init(afError: AFError) {
         switch afError {
@@ -54,6 +52,5 @@ public enum APIError: Error, Equatable {
         case .urlRequestValidationFailed(let reason):
             self = .logicError(systemErrorInfo: "\(reason)")
         }
-        self = .other
     }
 }

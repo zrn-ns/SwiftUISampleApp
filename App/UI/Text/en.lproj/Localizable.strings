@@ -6,6 +6,10 @@
   
 */
 
+"api error connection failure" = "Connection failure. Please try again later.";
+"api error cancelled" = "The request was cancelled.";
+"api error logic error" = "Unexpected error has occured. If the error persists, please contact us.";
+"api error user input error" = "Invalid user input. Please check.";
 "github id" = "Github ID";
 "loading" = "Loading";
 "reload" = "Reload";

@@ -50,8 +50,7 @@ struct GithubRepositoryListView<ViewModel: GithubRepositoryListViewModel>: View 
                     ProgressView(Localizable.loading())
 
                 case .error(let apiError):
-                    #warning("表示用のメッセージを出すように修正")
-                    ReloadableErrorView(errorMessage: apiError.localizedDescription) {
+                    ReloadableErrorView(errorMessage: apiError.presentableErrorMessage()) {
                         Task {
                             await viewModel.fetchAndReloadAll()
                         }

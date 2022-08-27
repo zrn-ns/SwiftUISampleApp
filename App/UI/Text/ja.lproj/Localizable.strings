@@ -6,6 +6,10 @@
   
 */
 
+"api error connection failure" = "サーバへの接続に失敗しました。再度お試しください。";
+"api error cancelled" = "操作がキャンセルされました。";
+"api error logic error" = "原因不明のエラーが発生しました。繰り返し発生する場合、サポートまでお問い合わせください。";
+"api error user input error" = "入力に間違いがあります。ご確認の上再度お試しください。";
 "github id" = "Github ID";
 "loading" = "読込中";
 "reload" = "再読み込み";
