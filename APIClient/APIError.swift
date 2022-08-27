@@ -21,9 +21,9 @@ public enum APIError: Error, Equatable {
     init(afError: AFError) {
         switch afError {
         case .createUploadableFailed(let error),
-                .createURLRequestFailed(let error),
-                .downloadedFileMoveFailed(let error, _, _),
-                .requestAdaptationFailed(let error):
+             .createURLRequestFailed(let error),
+             .downloadedFileMoveFailed(let error, _, _),
+             .requestAdaptationFailed(let error):
             self = .logicError(systemErrorInfo: error.localizedDescription)
         case .explicitlyCancelled:
             self = .cancelled
